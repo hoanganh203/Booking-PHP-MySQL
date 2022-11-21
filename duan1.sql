@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2022 lúc 09:40 AM
+-- Thời gian đã tạo: Th10 21, 2022 lúc 08:56 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -30,9 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `binhluan` (
   `id` int(10) NOT NULL,
   `noidung` varchar(255) NOT NULL,
-  `iduser` int(10) NOT NULL,
-  `idpro` int(10) NOT NULL,
-  `ngaybinhluan` varchar(30) NOT NULL
+  `user_id` int(10) NOT NULL,
+  `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -187,9 +186,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `password`, `img`, `status`, `sodem`, `role`) VALUES
-(8, 1644688422, 'Hoàng', 'Mai', 'hoangmaph23084@fpt.edu.vn', '25d55ad283aa400af464c76d713c07ad', '1668544100z3659517404333_62709c94819efb55f9fcd06bb2aecb62.jpg', 'Đang hoạt động', 2, 'Nhân viên'),
+(8, 1644688422, 'Hoàng', 'Mai', 'hoangmaph23084@fpt.edu.vn', '25d55ad283aa400af464c76d713c07ad', '1668544100z3659517404333_62709c94819efb55f9fcd06bb2aecb62.jpg', 'KhÃ´ng hoáº¡t Ä‘á»™ng', 2, 'Nhân viên'),
 (17, 1185044329, 'Thủy', 'Vũ', 'hoangmaph23084@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1668661294tesst.png', 'Không hoạt động', 1, 'Khách hàng'),
-(20, 1169610403, 'Hoang', 'Mai', 'duchaph23096@fpt.edu.vn', '202cb962ac59075b964b07152d234b70', '16686652593.jpg', 'Không hoạt động', 1, 'Khách hàng');
+(20, 1169610403, 'Hoang', 'Mai', 'duchaph23096@fpt.edu.vn', '202cb962ac59075b964b07152d234b70', '16686652593.jpg', 'Không hoạt động', 1, 'Khách hàng'),
+(21, 1335296982, 'DÆ°Æ¡ng', 'Nam', 'duongnam2703@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1669017303devil-icon-funny-icon-5.png', 'Äang hoáº¡t Ä‘á»™ng', 2, 'Khách hàng');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -282,7 +282,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

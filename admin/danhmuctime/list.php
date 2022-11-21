@@ -1,42 +1,35 @@
-<div class="Danhmuc__list">
-            <div class="Danhmuc__content--table">
-            <div class="Danhmuc__content1">
-            <input type="button" value="Chọn tất cả">
-            <input type="button" value="Bỏ chọn tất cả">
-            <input type="button" value="Xóa tất cả đã chọn">
-            <a href="index.php?act=adddmtime"><input type="button" value="Nhập thêm"></a>
-        </div>
-                <table>
+<section>
+            <h2>Quản lí Khung Giờ</h2>
+            <table>
+                <thead>
                     <tr>
-                        <th></th>
-                        <th>ID</th>
-                        <th>Time xem xe</th>
-                        <th></th>
+                        <td>Mã ID</td> 
+                        <td>Khung Giờ</td>
                     </tr>
-
-                    <?php
-                     foreach ($listdanhmuctime as $danhmuc){
+                </thead>
+                <tbody>
+                <?php 
+                    foreach($listdanhmuctime as $danhmuc){
                         extract($danhmuc);
-                        $suadm="index.php?act=suadmtime&id=".$id;
-                        $xoadm="index.php?act=xoadmtime&id=".$id;
-
-                        echo ' <tr>
-                        <td><input type="checkbox" name="" id=""></td>
-                        <td>'.$id.'</td>
-                        <td>'.$time.'</td>
-                        <td><a href="'.$suadm.'"><input type="button" value="Sửa"></a>
-                       <a href="'.$xoadm.'"><input type="button" value="Xóa"></a>
+                        $suadm="index.php?=suadmtime=".$id;
+                        $xoadm="index.php?=xoadmtime=".$id;
+                        echo '<tr>
+                        <td width="20%">'.$id.'</td>
+                        <td width="40%">'.$time.'</td>
+                        <td>
+                            
+                            <a href="index.php?act=suadmtime&id='.$id.'""><button class="normal update" >Update</button></a>
+                            
+                            <a href="index.php?act=xoadmtime&id='.$id.'"><button class="normal update" >Delete</button></a>
                         </td>
-                    </tr>
-                        ';
-                     }
-                    
-                    ?>
-
-                
-                </table>
-            </div>
-      
-
+                    </tr>';
+                    }
+                ?>
+                </tbody>
+            </table>
+        </section>
+        <a href="index.php?act=adddmtime"><button class="normal btn" type ="submit" name = "btn_luu">Thêm Mới</button></a>
         </div>
+    </body>
+</html>
 

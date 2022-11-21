@@ -16,8 +16,8 @@
             
             
             </li>
-                <li><a class="active"  href="index.php?act=adddm">Danh mục xe</a></li>
-                <li><a class="active"  href="index.php?act=adddmtime">Danh mục time</a></li>
+                <li><a class="active"  href="index.php?act=listdm">Danh mục xe</a></li>
+                <li><a class="active"  href="index.php?act=listdmtime">Danh mục time</a></li>
                 <li><a  href="index.php?act=addsp">Sản Phẩm</a></li>
                 <li><a  href="index.php?act=khachhang">Khách hàng</a></li>
                 <li><a  href="index.php?act=booking">Booking</a></li>

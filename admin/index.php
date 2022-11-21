@@ -18,21 +18,19 @@ if(isset($_GET['act'])){
             include "taikhoan/list.php";
             break;
             
-            case 'listdm':
-                $listdanhmuc = loadall_danhmuc();
-                include "danhmuc/list.php";
-                break;
-                
             case 'adddm':
-                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                    $tenloai = $_POST['tenloai'];
+                if(isset($_POST['them'])){
+                    $tenloai=$_POST['tenloai'];
                     insert_danhmuc($tenloai);
-                    $thongbao = "Thêm thành công";
+                    $thongbao="them thành công";
                 }
                 include "danhmuc/add.php";
                 break;
     
-           
+            case 'listdm':
+                $listdanhmuc = loadall_danhmuc();
+                include "danhmuc/list.php";
+                break;
     
             case 'xoadm':
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -50,16 +48,15 @@ if(isset($_GET['act'])){
                 break;
     
             case "updatedm":
-                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $tenloai = $_POST['tenloai'];
-                    $id = $_POST['id'];
+                if(isset($_POST['btn_luu'])){
+                    $tenloai=$_POST['tenloai'];
+                    $id =$_POST['id'];
                     update_danhmuc($id, $tenloai);
-                    $thongbao = "cập nhật thành công";
+                    $thongbao="them thành công";
                 }
                 $listdanhmuc = loadall_danhmuc();
                 include "danhmuc/list.php";
                 break;
-    
                 /*----*/
     
             case 'addsp':
@@ -141,12 +138,12 @@ if(isset($_GET['act'])){
                     $listsanpham = loadall_sanpham(0);
                     include "sanpham/list.php";
                     break;
-
+// quan ly time
                     case 'adddmtime':
-                        if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                        if (isset($_POST['them'])) {
                             $tenloai = $_POST['tenloai'];
                             insert_danhmuctime($tenloai);
-                            $thongbao = "Thêm thành công";
+                            $thongbao="them thành công";
                         }
                         include "danhmuctime/add.php";
                         break;
@@ -163,7 +160,7 @@ if(isset($_GET['act'])){
                         $listdanhmuctime = loadall_danhmuctime();
                         include "danhmuctime/list.php";
                         break;
-            
+          
                     case 'suadmtime':
                         if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                             $dmtime = loadone_danhmuctime($_GET['id']);
@@ -172,15 +169,16 @@ if(isset($_GET['act'])){
                         break;
             
                     case "updatedmtime":
-                        if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                            $tenloai = $_POST['tenloai'];
-                            $id = $_POST['id'];
+                        if(isset($_POST['btn_luu'])){
+                            $id =$_POST['maloai'];
+                            $tenloai=$_POST['tenloai'];
                             update_danhmuctime($id, $tenloai);
-                            $thongbao = "cập nhật thành công";
+                            $thongbao="them thành công";
                         }
                         $listdanhmuctime = loadall_danhmuctime();
                         include "danhmuctime/list.php";
                         break;
+                        
                         
             case 'booking':
                 $listbooking = loadall_booking();

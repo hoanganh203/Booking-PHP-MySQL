@@ -1,30 +1,20 @@
-
-        <div class="Danhmuc">
-            <div class="Danhmuc__title  goldal">
-                <h1>Thêm mới loại hàng</h1>
-            </div>
-
-            <div class="Danhmuc__content">
-                <form action="index.php?act=adddm" method="post">
-                    <div class="Danhmuc__content-ml  mb  input--item">
-                        Mã loại <br>
-                        <input type="text" name="maloai"  placeholder="auto ID">
-                    </div>
-                    <div class="Danhmuc__content-tl  mb  input--item">
-                        Tên loại <br>
-                        <input type="text" name="tenloai" >
-                    </div>
-                    <div class="Danhmuc__content1">
-                        <input type="submit" value="THÊM MỚI" name="themmoi">
-                        <input type="reset" value="NHẬP LẠI">
-                        <a href="index.php?act=listdm"><input type="button" value="DANH SÁCH"></a>
-                    </div>
-
-                    <?php 
-                    if(isset($thongbao)&&($thongbao!=""))echo $thongbao;                   
-                    ?>
-
-
+<section>
+                <h2>Thêm Danh Mục</h2>
+                <form action="index.php?act=adddm"method="POST" enctype="multipart/form-data">
+              <div>
+                <p>MÃ Danh Mục</p>
+                <input  type="text" name="maloai" disabled>
+                <p>TÊN Danh Mục</p>
+                <input  type="text" name="tenloai"> 
+                 <button class="normal btn" type="submit" name="them">Thêm Mới</button>  
+                 <?php 
+                if(isset($thongbao)&&($thongbao!="")) echo $thongbao;
+              ?>  
+              </div>
+              
                 </form>
-            </div>
+
+            </section>
         </div>
+    </body>
+</html>
