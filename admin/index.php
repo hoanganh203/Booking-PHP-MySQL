@@ -23,6 +23,10 @@ if(isset($_GET['act'])){
                     $tenloai=$_POST['tenloai'];
                     insert_danhmuc($tenloai);
                     $thongbao="them thành công";
+                    $listdanhmuc = loadall_danhmuc();
+                    include "danhmuc/list.php";
+                    break;
+        
                 }
                 include "danhmuc/add.php";
                 break;
@@ -144,6 +148,8 @@ if(isset($_GET['act'])){
                             $tenloai = $_POST['tenloai'];
                             insert_danhmuctime($tenloai);
                             $thongbao="them thành công";
+                            $listdanhmuctime = loadall_danhmuctime();
+                            include "danhmuctime/list.php";
                         }
                         include "danhmuctime/add.php";
                         break;
