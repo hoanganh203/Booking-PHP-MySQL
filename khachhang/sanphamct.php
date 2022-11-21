@@ -4,6 +4,7 @@
         $hinhsp = "images/" . $img;
         $book = "index.php?act=book&idsp=" . $id;
         $time = load_ten_danhmuctime($iddmtime);
+        $name1 = loadone1_danhmuc($iddm);
         ?>
         <div class="impl_buy_wrapper">
             <div class="container">

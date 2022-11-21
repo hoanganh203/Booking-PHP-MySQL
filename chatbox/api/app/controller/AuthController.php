@@ -64,7 +64,7 @@ class AuthController{
 
            $time = time();
            $new_img_name = $time.$img_name;
-           if(move_uploaded_file($tmp_name,"api/images/".$new_img_name)){
+           if(move_uploaded_file($tmp_name,"../../images/".$new_img_name)){
                $ran_id = rand(time(), 1000000000);
                $status = "Đang hoạt động";
                $encrypt_pass = md5($password);
