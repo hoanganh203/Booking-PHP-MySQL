@@ -23,4 +23,5 @@
                 <li><a  href="index.php?act=booking">Booking</a></li>
                 <li><a   href="index.php?act=dsbl">Bình luận</a></li>
                 <li><a href="index.php?act=show">Hóa Đơn</a></li>
+                <li><a href="index.php?act=thong_ke">Thống kê</a></li>
             </ul>

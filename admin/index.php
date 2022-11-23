@@ -5,6 +5,7 @@ include "../modal/pdo.php";
 include "../modal/danhmuc.php";
 include "../modal/sanpham.php";
 include "../modal/danhmuctime.php";
+include '../modal/thong_ke.php';
 include "../modal/book.php";
 
 $listdanhmuc = loadall_danhmuc();
@@ -23,10 +24,6 @@ if(isset($_GET['act'])){
                     $tenloai=$_POST['tenloai'];
                     insert_danhmuc($tenloai);
                     $thongbao="them thành công";
-                    $listdanhmuc = loadall_danhmuc();
-                    include "danhmuc/list.php";
-                    break;
-        
                 }
                 include "danhmuc/add.php";
                 break;
@@ -61,7 +58,7 @@ if(isset($_GET['act'])){
                 $listdanhmuc = loadall_danhmuc();
                 include "danhmuc/list.php";
                 break;
-                /*----*/
+                /*-- san pham--*/
     
             case 'addsp':
                 if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
@@ -148,8 +145,6 @@ if(isset($_GET['act'])){
                             $tenloai = $_POST['tenloai'];
                             insert_danhmuctime($tenloai);
                             $thongbao="them thành công";
-                            $listdanhmuctime = loadall_danhmuctime();
-                            include "danhmuctime/list.php";
                         }
                         include "danhmuctime/add.php";
                         break;
@@ -183,6 +178,12 @@ if(isset($_GET['act'])){
                         }
                         $listdanhmuctime = loadall_danhmuctime();
                         include "danhmuctime/list.php";
+                        break;
+
+// thống kê
+                    case 'thong_ke':
+                        $list_thongke = load_all_thongke();
+                        include "thong_ke/list.php";
                         break;
                         
                         
