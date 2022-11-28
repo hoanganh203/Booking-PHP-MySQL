@@ -4,9 +4,10 @@ include "header.php";
 include "../modal/pdo.php";
 include "../modal/danhmuc.php";
 include "../modal/sanpham.php";
-include "../modal/danhmuctime.php";
-include '../modal/thong_ke.php';
 include "../modal/book.php";
+include "../modal/thongke.php";
+include "../modal/taikhoan.php";
+
 
 $listdanhmuc = loadall_danhmuc();
 
@@ -15,15 +16,20 @@ if(isset($_GET['act'])){
     $act=$_GET['act'];
     switch($act){
 
-        case 'khachhang':
+        case 'taikhoan':
+            $listtaikhoan = loadall_taikhoan();
             include "taikhoan/list.php";
             break;
-            
+            // danh mục 
             case 'adddm':
                 if(isset($_POST['them'])){
                     $tenloai=$_POST['tenloai'];
                     insert_danhmuc($tenloai);
                     $thongbao="them thành công";
+                    $listdanhmuc = loadall_danhmuc();
+                    include "danhmuc/list.php";
+                    break;
+        
                 }
                 include "danhmuc/add.php";
                 break;
@@ -58,12 +64,11 @@ if(isset($_GET['act'])){
                 $listdanhmuc = loadall_danhmuc();
                 include "danhmuc/list.php";
                 break;
-                /*-- san pham--*/
+                /*--sản phẩm--*/
     
             case 'addsp':
                 if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                     $iddm = $_POST['iddm'];
-                    $iddmtime = $_POST['iddmtime'];
                     $tensp = $_POST['tensp'];
                     $giasp = $_POST['giasp'];
                     $mota = $_POST['mota'];
@@ -80,11 +85,10 @@ if(isset($_GET['act'])){
                     $target_file = $target_dir . basename($_FILES["hinhphu"]["name"]);
                     if (move_uploaded_file($_FILES["hinhphu"]["tmp_name"], $target_file)); {
                     }
-                    insert_sanpham($tensp, $giasp, $hinhsp,$hinhphu, $mota, $iddm, $iddmtime);
+                    insert_sanpham($tensp, $giasp, $hinhsp,$hinhphu, $mota, $iddm);
                     $thongbao = "Thêm thành công";
                 }
                 $listdanhmuc = loadall_danhmuc();
-                $listdanhmuctime = loadall_danhmuctime();
                 include "sanpham/add.php";
                 break;
     
@@ -102,24 +106,24 @@ if(isset($_GET['act'])){
                 break;
     
             case 'xoasp':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    delete_sanpham($_GET['id']);
+                if (isset($_GET['id_xebook']) && ($_GET['id_xebook'] > 0)) {
+                    delete_sanpham($_GET['id_xebook']);
                 }
-                $listsanpham = loadall_sanpham("", 0);
+                $listsanpham = loadall_sanpham(0);
                 include "sanpham/list.php";
                 break;
 
                 case 'suasp':
-                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                        $sp= loadone_sanpham($_GET['id']);
+                    if (isset($_GET['id_xebook']) && ($_GET['id_xebook'] > 0)) {
+                        $sp = loadone_sanpham($_GET['id_xebook']);
                     }
                     $listdanhmuc = loadall_danhmuc();
                     include "sanpham/update.php";
                     break;
-    
+
                 case "updatesp":
                     if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                        $id = $_POST['id'];
+                        $id_xebook = $_POST['id_xebook'];
                         $tensp = $_POST['tensp'];
                         $giasp = $_POST['giasp'];
                         $mota = $_POST['mota'];
@@ -133,64 +137,81 @@ if(isset($_GET['act'])){
                         $target_file = $target_dir . basename($_FILES["hinhphu"]["name"]);
                         if (move_uploaded_file($_FILES["hinhphu"]["tmp_name"], $target_file)); {
                         }
-                        update_sanpham($id,$tensp, $giasp, $hinhsp,$hinhphu, $mota);
+                        update_sanpham($id_xebook,$tensp, $giasp, $hinhsp,$hinhphu, $mota);
                         $thongbao = "cập nhật thành công";
                     }
                     $listsanpham = loadall_sanpham(0);
                     include "sanpham/list.php";
                     break;
-// quan ly time
-                    case 'adddmtime':
-                        if (isset($_POST['them'])) {
-                            $tenloai = $_POST['tenloai'];
-                            insert_danhmuctime($tenloai);
-                            $thongbao="them thành công";
-                        }
-                        include "danhmuctime/add.php";
-                        break;
-            
-                    case 'listdmtime':
-                        $listdanhmuctime = loadall_danhmuctime();
-                        include "danhmuctime/list.php";
-                        break;
-            
-                    case 'xoadmtime':
-                        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                            delete_danhmuctime($_GET['id']);
-                        }
-                        $listdanhmuctime = loadall_danhmuctime();
-                        include "danhmuctime/list.php";
-                        break;
-          
-                    case 'suadmtime':
-                        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                            $dmtime = loadone_danhmuctime($_GET['id']);
-                        }
-                        include "danhmuctime/update.php";
-                        break;
-            
-                    case "updatedmtime":
-                        if(isset($_POST['btn_luu'])){
-                            $id =$_POST['maloai'];
-                            $tenloai=$_POST['tenloai'];
-                            update_danhmuctime($id, $tenloai);
-                            $thongbao="them thành công";
-                        }
-                        $listdanhmuctime = loadall_danhmuctime();
-                        include "danhmuctime/list.php";
-                        break;
-
-// thống kê
-                    case 'thong_ke':
-                        $list_thongke = load_all_thongke();
-                        include "thong_ke/list.php";
-                        break;
-                        
-                        
+    // booking
             case 'booking':
                 $listbooking = loadall_booking();
                 include "quanlibooking/list.php";
                 break;
+
+                case 'suabook':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        $book= loadone_booking($_GET['id']);
+                    }
+                    $listbooking = loadall_booking();
+                    include "quanlibooking/updatebook.php";
+                    break;
+
+             
+            case "updatebook":
+                if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                    $id = $_POST['id'];
+                    $trangthai = $_POST['trangthai'];
+                    update_booking($id,$trangthai);
+                    $thongbao="them thành công";
+                }
+                $listbooking = loadall_booking();
+                include "quanlibooking/list.php";
+                break;
+
+                case 'xoabook':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        delete_booking($_GET['id']);
+                    }
+                    $listbooking = loadall_booking();
+                    include "quanlibooking/list.php";
+                    break;
+
+                            
+
+            case 'suatk':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $address = $_POST['address'];
+                    $tel = $_POST['tel'];
+                    $email = $_POST['email'];
+                    $id = $_POST['id'];
+                    update_taikhoan($id, $user, $pass, $email, $address, $tel);
+                    $_SESSION['user'] = checkuser($user,$pass);
+                    header('Location: index.php?edit_taikhoan');
+                }
+                include "taikhoan/edit_taikhoan.php";
+                break;
+            
+        case 'xoatk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_taikhoan($_GET['id']);
+            }
+            $listtaikhoan = loadall_taikhoan();
+            include "taikhoan/list.php";
+            break;
+
+            // thống kê
+            case 'listthongke':
+                $list_thongke= load_all_thongke();
+                include "thongke/list.php";
+                break;
+            case 'xoatk':
+                if (isset($_GET['id']) && ($_GET['id']) >0) {
+                    delete_thongke($_GET['id']);
+                }
+                
 
     }
 }else {

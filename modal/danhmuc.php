@@ -17,28 +17,6 @@ function loadall_danhmuc(){
 }
 
 
-function load_ten_danhmuc($iddm){
-    if($iddm>0){
-    $sql = "select * from danhmuc where id=" . $iddm;
-    $dm = pdo_query_one($sql);
-    extract($dm);
-    return $name1;
-    }else{
-        return"";
-    }
-}
-
-function load_ten_danhmuctime($iddmtime){
-    if($iddmtime>0){
-    $sql = "select * from danhmuctime where id=" . $iddmtime;
-    $dmtime = pdo_query_one($sql);
-    extract($dmtime);
-    return $time;
-    }else{
-        return"";
-    }
-}
-
 function loadone_danhmuc($id){
     $sql="select * from danhmuc where id=".$id;
     $dm=pdo_query_one($sql);
@@ -51,6 +29,16 @@ function loadone1_danhmuc($iddm){
     extract($dm);
     return $name1;
 }
+
+
+
+function loadname_sanpham($id_xebook){
+    $sql="select * from sanpham where id_xebook=".$id_xebook;
+    $dm=pdo_query_one($sql);
+    extract($dm);
+    return $id_xebook;
+}
+
 
 
 function update_danhmuc($id,$tenloai){

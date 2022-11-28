@@ -97,9 +97,8 @@ button a {
 }
 
 table {
-    border: 2px solid #000;
+    border: 1px solid #000;
     padding: 12px 0;
-    margin-bottom: 24px;
 }
 
 tbody tr td {

@@ -7,7 +7,7 @@
                     <?php
                             foreach ($listdanhmuc as $danhmuc){
                                 extract($danhmuc);
-                                echo '<option value="'.$id.'">'.$name1.'</option>';
+                                echo '<option value="'.$id_xebook.'">'.$name1.'</option>';
                             }
                             ?>
                     </select>
@@ -42,8 +42,8 @@
                     <?php
                      foreach ($listsanpham as $sanpham){
                         extract($sanpham);
-                        $suasp="index.php?act=suasp&id=".$id;
-                        $xoasp="index.php?act=xoasp&id=".$id;
+                        $suasp="index.php?act=suasp&id_xebook=".$id_xebook;
+                        $xoasp="index.php?act=xoasp&id_xebook=".$id_xebook;
                         $hinhpath="../images/".$img;
                         $hinhphu="../img/".$imgphu;
                         if(is_file($hinhpath)){
@@ -54,7 +54,7 @@
                         }
                         echo ' <tr>
                         <td><input type="checkbox" name="" id=""></td>
-                        <td>'.$id.'</td>
+                        <td>'.$id_xebook.'</td>
                         <td>'.$name.'</td>
                         <td>'.$price.' $</td>
                         <td>'.$mota.' $</td>
@@ -77,3 +77,9 @@
        
 
         </div>
+
+        <style>
+            td{
+                border: 1px solid #ccc;
+            }
+        </style>

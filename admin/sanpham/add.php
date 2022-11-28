@@ -20,19 +20,6 @@
                         </select>
                     </div>
 
-                    <div class="Danhmuc__content-ml  mb">
-                        Chọn khung giờ <br>
-                        <select name="iddmtime">
-                            <?php
-                            foreach ($listdanhmuctime as $danhmuc){
-                                extract($danhmuc);
-                                echo '<option value='.$id.'>'.$time.'</option>';
-                            }
-                            ?>
-
-                            <option value=""></option>
-                        </select>
-                    </div>
 
                     <div class="Danhmuc__content-tl  mb  input--item">
                         Tên xe <br>

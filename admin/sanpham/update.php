@@ -61,7 +61,7 @@
                         <textarea name="mota" cols="30" rows="10"><?=$mota?></textarea>
                     </div>
                     <div class="Danhmuc__content1">
-                    <input type="hidden" name="id" value="<?=$id?>">
+                    <input type="hidden" name="id_xebook" value="<?=$id_xebook?>">
                         <input type="submit" value="Cập Nhật" name="capnhat">
                         <input type="reset" value="NHẬP LẠI">
                         <a href="index.php?act=listsp"><input type="button" value="DANH SÁCH"></a>

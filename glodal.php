@@ -1,5 +1,5 @@
 <?php
-$img_path="khachhang/chatbox/api/images";
+$img_path="upload/";
 
 ?>
 

@@ -83,7 +83,10 @@
 </div>
 <!------ Search Box Start ------>
 
+<?php
 
+
+?>
 
 
 <!------ Welcome Wrapper Start ------>
@@ -199,11 +202,10 @@
 
     foreach ($spnew as $sp) {
         extract($sp);
-        $time = load_ten_danhmuctime($iddmtime);
         $name1 = loadone1_danhmuc($iddm);
         $hinhsp = "images/" . $img;
         $hinhphu = "img/" . $imgphu;
-        $datlich = "index.php?act=sanphamct&idsp=" . $id;
+        $datlich = "index.php?act=sanphamct&idsp=" .$id_xebook;
         echo '
                     <div class="impl_fea_car_box">
                         <div class="impl_fea_car_img">
@@ -218,8 +220,7 @@
                                     <span class="impl_fea_name">' . $name1 . '</span></li>
                                 <li><span class="impl_fea_title">Thông tin</span>
                                     <span class="impl_fea_name">' . $mota . '</span></li>
-                                <li><span class="impl_fea_title">Khung giờ</span>
-                                    <span class="impl_fea_name">'.$time.'</span></li>
+                             
                             </ul>
                             <div class="impl_fea_btn">
                                 <button class="impl_btn"><span class="impl_doller">$ ' . $price . '</span><span class="impl_bnw">Add cart</span></button>

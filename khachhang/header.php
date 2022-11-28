@@ -1,8 +1,8 @@
 <!DOCTYPE html><?php
                 ob_start();
                 include "glodal.php";
-        $linksp = "index.php?act=sanpham";
-
+                $linksp = "index.php?act=sanpham";
+                $lichsu = "index.php?act=lichsu";
                 ?>
 
 
@@ -77,45 +77,104 @@ Purchase: http://themeforest.net/user/kamleshyadav
                         <div class="impl_logo_responsive">
                             <a href="index.html"><img src="assets/images/logo1.png" alt="Logo" class="img-fluid"></a>
                         </div>
-                        <a href="sell_step.html" class="impl_btn">Sell your car</a>
                         <div class="impl_menu">
                             <nav>
                                 <div class="menu_cross">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </div>
                                 <ul>
-                                    <li class="dropdown"><a href="javascript:;" class="active">home</a>
+
+                                    <li class="dropdown"><a href="index.php" class="active">home</a>
+
                                         <ul class="sub-menu">
                                             <li><a href="index.html">Home version1</a></li>
                                             <li><a href="home.html">Home version2</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="<?=$linksp?>">Shop</a></li>
-                                    <li class="dropdown"><a href="javascript:;">Purchase car</a>
+
+
+                                    <li><a href="<?= $linksp ?>">Shop</a></li>
+
+                                    <li class="dropdown"><a href="javascript:;">Danh mục</a>
                                         <ul class="sub-menu">
-                                            <li><a href="purchase_new.html">New car</a></li>
-                                            <li><a href="purchase_used.html">old car</a></li>
-                                            <li><a href="purchase_new_single.html">New Car Single</a></li>
-                                            <li><a href="purchase_old_single.html">old car single</a></li>
+                                            <?php
+                                            $dsdm = loadall_danhmuc();
+                                            foreach ($dsdm as $dm) {
+                                                extract($dm);
+                                                $linkdm = "index.php?act=sanpham&iddm=" . $id;
+                                                echo '
+                                                <li> <a href="' . $linkdm . '">' . $name1 . '</a></li>
+               
+                ';
+                                            }
+                                            ?>
                                         </ul>
                                     </li>
-                                    <li><a href="service.html">services</a></li>
-                                    <li class="dropdown"><a href="javascript:;">blog</a>
+                                    <?php
+                                    if (isset($_SESSION['user'])) {
+                                        extract($_SESSION['user']);
+                                        $link = "index.php?act=lichsu&id_user=" . $_SESSION['user']['id_user'];
+                                        echo '<li>
+                                   <a href="' . $link . '">Lịch sử</a>
+                               </li>
+                    ';
+                                    }    ?>
+
+                                    <li class="test"><a href="javascript:;">blog</a>
                                         <ul class="sub-menu">
                                             <li><a href="blog_left_sidebar.html">blog left sidebar</a></li>
                                             <li><a href="blog_right_sidebar.html">blog right sidebar</a></li>
                                             <li><a href="blog_single.html">blog single</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown"><a href="javascript:;">pages</a>
+
+                                    <li class="dropdown"><a href="javascript:;">
+                                            <?php
+                                            if (isset($_SESSION['user'])) {
+                                                extract($_SESSION['user']);
+                                            ?>
+
+                                                <div class="header__user">
+
+                                                    <div class="img__user--header">
+                                                        <?php
+                                                        $hinhsp = $img_pathh . $img;
+                                                        echo '<img src="' . $hinhsp . '">';
+
+                                                        ?>
+                                                    </div>
+                                                    <div class="header__nameuser">
+
+                                                        Xin chào <br>
+                                                        <?= $user ?>
+
+                                                    </div>
+                                                </div>
+                                         
+                                        </a>
                                         <ul class="sub-menu">
-                                            <li><a href="sell_step.html">Sell page</a></li>
-                                            <li><a href="compare.html">compare page</a></li>
-                                            <li><a href="checkout.html">checkout page</a></li>
-                                            <li><a href="error.html">404 page</a></li>
+                                            <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li>
+                                            <li><a href="index.php?act=edit_taikhoan">Cập nhật TT tài khoản</a></li>
+                                            <?php if($sodem == 2){ ?>
+                                            <li><a href="admin/index.php">Đăng nhập adim</a></li>
+                                            <?php } ?>
+                                            <li><a href="index.php?act=thoat">Thoát</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <?php
+                                            }else{
+
+
+                                            ?>
+
+                                    <div class="headercon__step2--dn">
+                                        <li class="log">
+                                            <a href="index.php?act=dangky">Đăng ký</a>
+                                        </li>
+                                        <li class="log">
+                                            <a href="index.php?act=dangnhap">Đăng nhập</a>
+                                        </li>
+<?php }?>
                                 </ul>
                             </nav>
                         </div>
@@ -200,168 +259,104 @@ Purchase: http://themeforest.net/user/kamleshyadav
                                     </div>
                                 </li>
 
-                                <?php
-
-                                if (isset($_SESSION['unique_id'])) {
-                                    include_once "chatbox/api/app/controller/AuthController.php";
-                                    include_once "chatbox/api/app/Config.php";
-                                    include_once "chatbox/api/app/controller/UserController.php";
-
-                                    $auth = new AuthController();
-                                    $auth->checkAuth();
-                                    $user = new UserController();
-                                    $row = $user->getUserById($_SESSION['unique_id']);
-                                    include_once "chatbox/part/header.php";
-                                ?>
 
 
 
-                                    <div class="wrapper">
-                                        <section class="users">
-                                            <div class="content">
-                                                <img src="images/<?php echo $row['img']; ?>" alt="">
-                                                <div class="details">
-                                                    <span>Xin Chào - <?php echo $row['lname'] . ' ' . $row['fname']; ?></span>
-                                                    <p>Trạng thái - <?php echo $row['status']; ?></p>
-                                                </div>
-                                            </div>
 
-                                            <?php
-
-                                            if ($row['sodem'] == 2) {
-
-                                            ?>
-                                                <li><a href="index.php?act=admin" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i>admin</a></li>
-
-                                            <?php } ?>
-                                            <a href="chatbox/api/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Đăng xuất</a>
-                                        </section>
-                                    </div>
-
-                                    <a href="index.php?act=chat">Inbox</a>
-
-                                <?php } else {
-                                    header('Location: '); ?>
-
-                                    <li><a href="index.php?act=dangky" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng ký</a></li>
-                                    <li><a href="index.php?act=dangnhap" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
-
-                                <?php } ?>
-
-                                <div class="impl_search_overlay">
-                                    <div class="impl_search_area">
-                                        <div class="srch_inner">
-                                            <form action="#">
-                                                <input type="text" placeholder="Search here... ">
-                                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                            </form>
-                                            <div class="srch_close_btn">
-                                                <span class="srch_close_btn_icon"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!--sign-in form-->
-
-
-
-        <div class="impl_searchbox_wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="impl_search_box custom_select">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="impl_select_boxes">
-                                        <div class="danhmuch1">
-                                            <h1>Danh mục</h1>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="danhmuch1">
-                                                <h1>Loại xe</h1>
-                                            </div>
-                                            <?php
-                                            $dsdm = loadall_danhmuc();
-                                            foreach ($dsdm as $dm) {
-                                                extract($dm);
-                                                $linkdm = "index.php?act=sanpham&iddm=" . $id;
-                                                echo '
-                                            <a href="' . $linkdm . '">' . $name1 . '</a>
-               
-                ';
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="item">
-                                            <div class="danhmuch1">
-                                                <h1>Time</h1>
-                                            </div>
-                                            <?php
-                                            $dsdm1 = loadall_danhmuctime();
-                                            foreach ($dsdm1 as $dm2) {
-                                                extract($dm2);
-                                                $linkdm = "index.php?act=sanphamtime&iddmtime=" . $id;
-                                                echo '
-                    <a href="' . $linkdm . '">' . $time . '</a>
-                ';
-                                            }
-                                            ?>
-                                        </div>
-
-                                    </div>
+                    <div class="impl_search_overlay">
+                        <div class="impl_search_area">
+                            <div class="srch_inner">
+                                <form action="#">
+                                    <input type="kyw" placeholder="Search here... ">
+                                    <button type="submit" name="timkiem"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                                <div class="srch_close_btn">
+                                    <span class="srch_close_btn_icon"><i class="fa fa-times" aria-hidden="true"></i></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-       
-            <style>
-                * {
-                    margin: 0;
-                    padding: 0;
-                }
+        </div>
+    </div>
+    </div>
+    <!--sign-in form-->
 
-                .content img {
-                    width: 50px;
-                    height: 50px;
-                }
 
-                .fa-sign-in:before {
-                    margin-right: 10px;
-                }
 
-                .danhmuch1 h1 {
-                    text-align: center;
-                    font-size: 22px;
-                    background-color: #cccccc;
-                    width: 170px;
-                    padding: 5px 0px;
-                    margin: 0 auto;
-                }
 
-                .item {
-                    display: flex;
-                    margin: 30px 0px 30px 0px;
-                }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-                .item a {
-                    padding: 5px 0px;
-                    border: 1px solid #333;
-                    margin: -2px 10px;
-                    width: 100px;
-                    text-align: center;
-                    font-size: 17px;
-                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                }
+        .content img {
+            width: 50px;
+            height: 50px;
+        }
 
-                .item a:hover {
-                    background-color: #333;
-                }
-            </style>
+        .fa-sign-in:before {
+            margin-right: 10px;
+        }
+
+        .danhmuch1 h1 {
+            text-align: center;
+            font-size: 22px;
+            background-color: #cccccc;
+            width: 170px;
+            padding: 5px 0px;
+            margin: 0 auto;
+        }
+
+        .item {
+            display: flex;
+            margin: 30px 0px 30px 0px;
+        }
+
+        .item a {
+            padding: 5px 0px;
+            border: 1px solid #333;
+            margin: -2px 10px;
+            width: 100px;
+            text-align: center;
+            font-size: 17px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .item a:hover {
+            background-color: #333;
+        }
+
+
+        .img__user--header img {
+            margin-top: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .header__user {
+            margin: -48px 0px -5px 0px;
+        }
+
+        .log {
+            margin: 20px 0px 0px 0px;
+        }
+
+        .header__nameuser {
+            margin: -37px 30px 0px 67px;
+        }
+
+        .headercon__step1--dn {
+            margin: -32px 0px 0px 143px;
+            padding: 30px 0px;
+        }
+
+        .test {
+            margin: 0px 460px 0px 0px;
+        }
+    </style>

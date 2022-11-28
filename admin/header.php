@@ -13,15 +13,11 @@
             <h1>Quản Trị Website</h1>
             <ul>
                 <li><a href="index.php?act=home">Trang chủ</a>
-            
-            
             </li>
                 <li><a class="active"  href="index.php?act=listdm">Danh mục xe</a></li>
-                <li><a class="active"  href="index.php?act=listdmtime">Danh mục time</a></li>
                 <li><a  href="index.php?act=addsp">Sản Phẩm</a></li>
-                <li><a  href="index.php?act=khachhang">Khách hàng</a></li>
-                <li><a  href="index.php?act=booking">Booking</a></li>
+                <li><a  href="index.php?act=taikhoan">QL_tàikhoan</a></li>
+                <li><a  href="index.php?act=booking">QL_Booking</a></li>
                 <li><a   href="index.php?act=dsbl">Bình luận</a></li>
-                <li><a href="index.php?act=show">Hóa Đơn</a></li>
-                <li><a href="index.php?act=thong_ke">Thống kê</a></li>
+                <li><a href="index.php?act=listthongke">Thống kê</a></li>
             </ul>
