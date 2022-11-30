@@ -1,13 +1,12 @@
 <div class="Danhmuc__list">
             <div class="Danhmuc__content--table">
                 <form action="index.php?act=listsp" method="POST">
-                    <input type="text" name="kyw">
                     <select name="iddm">
                     <option value="0" selected>Tất cả</option>
                     <?php
                             foreach ($listdanhmuc as $danhmuc){
                                 extract($danhmuc);
-                                echo '<option value="'.$id_xebook.'">'.$name1.'</option>';
+                                echo '<option value="'.$id.'">'.$name1.'</option>';
                             }
                             ?>
                     </select>

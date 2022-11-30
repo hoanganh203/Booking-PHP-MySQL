@@ -16,7 +16,6 @@
 
 
 <?php
- $listbooking = loadall_booking();
 $id=$_SESSION['user']['id_user'];
 $sql = "select * from booking where id_user = '{$id}'";
 $user=pdo_query_one($sql);
@@ -25,53 +24,91 @@ $user=pdo_query_one($sql);
     foreach($listCT as $ls){
         extract($ls);
 ?>
-        <tr>
+<?php if (isset($trangthai) && $trangthai == 0) {
+    ?>
+        <tr class="test3">
             <td><?php echo '' . $user. ''; ?></td>
         <td><?php echo '' . $name . ''; ?></td>
         <td><?php echo '' . $date_book . ''; ?></td>
         <td><?php echo '' . $time_book . ''; ?></td>
         <td><?php echo '' . $time_nhan . ''; ?></td>
         <td><?php echo '' . $note . ''; ?></td>
-     
-        <td class="domau"><?php if (isset($trangthai) && $trangthai == 0) {
-                                echo "<h6>Chưa duyệt</h6>
-                                Vui lòng chờ ít phút";
-                                ?>
-                                <style>
-                                    .domau{
-                                        background-color: red;
-                                    }
-                                </style>
-                           <?php }
-                            ?>
-            <?php if (isset($trangthai) && $trangthai == 1) {
-                echo "<h6>Đã duyệt</h6>
-                Mong bạn đến đúng lịch";
+
+       <td><?php if (isset($trangthai) && $trangthai == 0) {
+                echo "<h6>Chưa duyệt</h6>
+                Vui lòng đợi ít phút";
                 ?>
-                                <style>
-                                    .domau{
-                                        background-color: green;
-                                    }
-                                </style>
-                           <?php }
-                            ?>
-            <?php if (isset($trangthai) && $trangthai == 2) {
-                echo "Đã xem xe <br>Cảm ơn quý khách";
-            }
-            ?>
+                             
+       <?php }?>
+       </td> 
+       </tr>
+       <style>
+          .test3{
+            background-color: red;
+          }
+       </style>
+
+       <?php } ?>
+
+       <?php if (isset($trangthai) && $trangthai == 1) {
+    ?>
+        <tr class="test1">
+            <td><?php echo '' . $user. ''; ?></td>
+        <td><?php echo '' . $name . ''; ?></td>
+        <td><?php echo '' . $date_book . ''; ?></td>
+        <td><?php echo '' . $time_book . ''; ?></td>
+        <td><?php echo '' . $time_nhan . ''; ?></td>
+        <td><?php echo '' . $note . ''; ?></td>
+
+       <td><?php if (isset($trangthai) && $trangthai == 1) {
+                echo "<h6>Đã duyệt</h6>
+                Mong bạn sẽ đến đúng giờ";
+                ?>
+                             
+       <?php }?>
+
+       <style>
+          .test1{
+            background-color: #ccc;
+          }
+       </style>
+       </td> 
+       </tr>
+
+
+       <?php } ?>
+
+       <?php if (isset($trangthai) && $trangthai == 2) {
+    ?>
+        <tr class="test2">
+            <td><?php echo '' . $user. ''; ?></td>
+        <td><?php echo '' . $name . ''; ?></td>
+        <td><?php echo '' . $date_book . ''; ?></td>
+        <td><?php echo '' . $time_book . ''; ?></td>
+        <td><?php echo '' . $time_nhan . ''; ?></td>
+        <td><?php echo '' . $note . ''; ?></td>
+
+       <td><?php if (isset($trangthai) && $trangthai == 2) {
+                echo "<h6>Đã xem xe</h6>
+                Cảm ơn khách hàng đã tin tưởng";
+                ?>
+                             
+       <?php }?>
+       </td> 
+       </tr>
+       <style>
+          .test2{
+            background-color: green;
+          }
+       </style>
+
+       <?php } ?>
 
 
 
-        </td>
 
 
-
-    </tr>
-<?php
- }
-}
- ?>
-
+       <?php } } ?>
 </table>
 
 <style>
