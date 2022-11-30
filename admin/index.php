@@ -7,7 +7,7 @@ include "../modal/sanpham.php";
 include "../modal/book.php";
 include "../modal/thongke.php";
 include "../modal/taikhoan.php";
-
+include "../modal/binh_luan.php";
 
 $listdanhmuc = loadall_danhmuc();
 
@@ -207,11 +207,20 @@ if(isset($_GET['act'])){
                 $list_thongke= load_all_thongke();
                 include "thongke/list.php";
                 break;
-            case 'xoatk':
-                if (isset($_GET['id']) && ($_GET['id']) >0) {
-                    delete_thongke($_GET['id']);
+            
+            case 'list_binhluan':
+                $list_bl = load_binhluan();
+                include "../admin/binh_luan/list.php";
+                   break;
+        
+            case 'xoa_binhluan':
+                if (isset($_GET['ma_bl'])) {
+                    $ma_bl = $_GET['ma_bl'];
+                    delete_binhluan($ma_bl);
                 }
-                
+                    $list_bl = load_binhluan();
+                    include "./binh_luan/list.php";
+                    break;
 
     }
 }else {

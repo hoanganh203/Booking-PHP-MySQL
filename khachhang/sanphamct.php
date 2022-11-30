@@ -42,6 +42,10 @@
               </div>
             </div>
           </div>
+          <div class="maps">
+  <center>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8639810443356!2d105.74459841485445!3d21.03812778599324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b991d80fd5%3A0x53cefc99d6b0bf6f!2sFPT%20Polytechnic%20Hanoi!5e0!3m2!1sen!2s!4v1669743581714!5m2!1sen!2s" width="800" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </center>
 
       
 
@@ -136,7 +140,7 @@
               }
 
               .form_all{
-                margin: 50px 0px 0px 300px ;
+                margin: 50px 0px 0px 360px ;
                 border: 1px solid #fff;
                 width: 800px;
                 padding: 30px 0px;
@@ -193,4 +197,17 @@
             <?php } else { ?>
               <h1>Vui lòng đăng nhập</h1>
             <?php } ?>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#binhluan").load("./khachhang/comment/form_cmt.php", {
+                    id_product: <?= $id_xebook ?>
+                });
+            });
+        </script>
+
+        <div id="binhluan">
+
+        </div>
           </div>
