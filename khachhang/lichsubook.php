@@ -7,7 +7,6 @@
         <th>Tên xe</th>
         <th>Date_book</th>
         <th>Date_time</th>
-        <th>Time_book</th>
         <th>note</th>
         <th>Trạng thái</th>
 
@@ -30,7 +29,6 @@ $user=pdo_query_one($sql);
             <td><?php echo '' . $user. ''; ?></td>
         <td><?php echo '' . $name . ''; ?></td>
         <td><?php echo '' . $date_book . ''; ?></td>
-        <td><?php echo '' . $time_book . ''; ?></td>
         <td><?php echo '' . $time_nhan . ''; ?></td>
         <td><?php echo '' . $note . ''; ?></td>
 
@@ -44,23 +42,49 @@ $user=pdo_query_one($sql);
        </tr>
        <style>
           .test3{
-            background-color: red;
+            background-color: #F7A4A4;
           }
        </style>
 
        <?php } ?>
 
        <?php if (isset($trangthai) && $trangthai == 1) {
+        ?>
+            <tr class="test4">
+                <td><?php echo '' . $user . ''; ?></td>
+                <td><?php echo '' . $name . ''; ?></td>
+                <td><?php echo '' . $date_book . ''; ?></td>
+                <td><?php echo '' . $time_nhan . ''; ?></td>
+                <td><?php echo '' . $note . ''; ?></td>
+                <td><?php if (isset($trangthai) && $trangthai == 1) {
+                        echo "Từ chối";
+                    }
+                    ?>
+            
+
+
+            </tr>
+
+            <style>
+                .test4 {
+                    background-color: #B73E3E;
+                }
+            </style>
+                </td>
+
+        <?php   }
+        ?>
+
+       <?php if (isset($trangthai) && $trangthai == 2) {
     ?>
         <tr class="test1">
             <td><?php echo '' . $user. ''; ?></td>
         <td><?php echo '' . $name . ''; ?></td>
         <td><?php echo '' . $date_book . ''; ?></td>
-        <td><?php echo '' . $time_book . ''; ?></td>
         <td><?php echo '' . $time_nhan . ''; ?></td>
         <td><?php echo '' . $note . ''; ?></td>
 
-       <td><?php if (isset($trangthai) && $trangthai == 1) {
+       <td><?php if (isset($trangthai) && $trangthai == 2) {
                 echo "<h6>Đã duyệt</h6>
                 Mong bạn sẽ đến đúng giờ";
                 ?>
@@ -69,7 +93,7 @@ $user=pdo_query_one($sql);
 
        <style>
           .test1{
-            background-color: #ccc;
+            background-color:  #B6E2A1;
           }
        </style>
        </td> 
@@ -78,17 +102,16 @@ $user=pdo_query_one($sql);
 
        <?php } ?>
 
-       <?php if (isset($trangthai) && $trangthai == 2) {
+       <?php if (isset($trangthai) && $trangthai == 3) {
     ?>
         <tr class="test2">
             <td><?php echo '' . $user. ''; ?></td>
         <td><?php echo '' . $name . ''; ?></td>
         <td><?php echo '' . $date_book . ''; ?></td>
-        <td><?php echo '' . $time_book . ''; ?></td>
         <td><?php echo '' . $time_nhan . ''; ?></td>
         <td><?php echo '' . $note . ''; ?></td>
 
-       <td><?php if (isset($trangthai) && $trangthai == 2) {
+       <td><?php if (isset($trangthai) && $trangthai == 3) {
                 echo "<h6>Đã xem xe</h6>
                 Cảm ơn khách hàng đã tin tưởng";
                 ?>
@@ -98,7 +121,7 @@ $user=pdo_query_one($sql);
        </tr>
        <style>
           .test2{
-            background-color: green;
+            background-color:#749F82 ;
           }
        </style>
 

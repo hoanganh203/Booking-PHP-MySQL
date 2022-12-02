@@ -1,7 +1,8 @@
+ 
 
 
 .app {
-    padding: 40px 120px;
+    padding: 40px 0px;
 }
 
 
@@ -32,6 +33,13 @@ h1 {
     border-radius: 4px;
     margin-bottom: 24px;
 }
+h2 {
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
 
 ul {
     display: flex;
@@ -68,11 +76,12 @@ li:hover::after {
     left: 0px;
     animation: slide 0.5s ease;
 }
-
-table {
-    padding: 0 40px;
+table, th ,tr{
+    border:1px solid #ccc;
 }
-
+table{
+    border-collapse:collapse;
+}
 thead {
     font-weight: 500;
 }
@@ -86,9 +95,8 @@ button.update {
     padding: 12px 24px;
 }
 
-button.delete {
-    background-color: red;
-    padding: 12px 24px;
+.pd{
+    padding: 15px;
 }
 
 button a {
@@ -96,64 +104,75 @@ button a {
     color: #fff;
 }
 
-table {
-    border: 1px solid #000;
-    padding: 12px 0;
+table, th{
+    border:1px solid black;
+    padding: 10px;
 }
-
-tbody tr td {
-    border-top: 1px solid rgba(0, 0, 0, 0.742);
-    padding-top: 12px;
+tr{
     text-align: center;
 }
-
-td img {
+table{
     width: 100%;
-    padding: 0 12px;
+    border-collapse:collapse;
 }
 
-button.btn {
-    background-color: #088178;
-    margin-top: 24px;
+table:hover {
+    background-color: #ccc;
 }
 
-form {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 200px;
-    flex-wrap: wrap;
-   
-}
-
-form div {
-    width: 45%;
-}
-
-form div input,
-select {
-    width: 100%;
-    height: 30px;
-    outline: none;
-    padding-left: 12px;
-    font-size: 16px;
-}
-
-input[type="radio"] {
-    height: 16px;
-    width: 16px;
-    margin: 0 8px 0 24px;
+tr:hover{
+    background-color: #f7f5f5;
 }
 
 
-input[type="file"] {
-    padding-top: 3px;
+
+button {
+    background: rgb(245, 240, 240);
+    border: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-21deg);
+    cursor: default;
+    margin: 3px 1px 0px 18px;
+}
+.chieudai{
+    width: 100px;
+    font-size: 13px;
 }
 
-form div span {
-    display: block;
-    border: 1px solid #000;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    padding-left: 12px;
+span a {
+    display: inline-block;
+    transform: skew(21deg);
+    color: #714da6;
 }
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: rgb(20, 20, 20);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+button:hover {
+    color: #fff;
+
+}
+
+button:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+

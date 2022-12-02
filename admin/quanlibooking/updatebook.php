@@ -16,8 +16,9 @@ if(is_array($book)){
                         
                     <select name="trangthai">
                    <option value="0" style="background-color: red;">Chưa duyệt</option>
-                   <option value="1" style="background-color: green;">Đã duyệt</option>
-                   <option value="2" style="background-color: blue;">Đã xem xe</option>
+                   <option value="1" style="background-color: green;">Từ chối</option>
+                   <option value="2" style="background-color: blue;">Đã duyệt</option>
+                   <option value="3" style="background-color: blue;">Đã xem xe</option>
                    </select>
                     </div>
                     <div class="Danhmuc__content1">

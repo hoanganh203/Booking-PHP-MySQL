@@ -28,7 +28,8 @@
                 </tbody>
             </table>
         </section>
-        <a href="index.php?act=adddm"><button class="normal btn" type ="submit" name = "btn_luu">Thêm Mới</button></a>
+                            <span><a href="index.php?act=adddm"><button type ="submit" name = "btn_luu">Thêm Mới</button></a></span>
+        
         </div>
     </body>
 </html>

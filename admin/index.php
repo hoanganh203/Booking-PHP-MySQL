@@ -1,10 +1,8 @@
 <?php
-// require 'admin/mail/PHPMailer/src/PHPMailer.php';
-// require '../mail/PHPMailer/src/PHPMailer.php';
-
-// require '../mail/PHPMailer/src/SMTP.php';
-
-// require '../mail/senmail.php';
+// require 'mail/PHPMailer/src/PHPMailer.php';
+// require 'mail/PHPMailer/src/PHPMailer.php';
+// require 'mail/PHPMailer/src/SMTP.php';
+// require 'mail/senmail.php';
 
 include "header.php";
 include "../modal/pdo.php";
@@ -71,6 +69,7 @@ if(isset($_GET['act'])){
                 include "danhmuc/list.php";
                 break;
                 /*--sản phẩm--*/
+
     
             case 'addsp':
                 if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
@@ -148,8 +147,16 @@ if(isset($_GET['act'])){
                     include "sanpham/list.php";
                     break;
     // booking
+
+    
             case 'booking':
-                $listbooking = loadall_booking();
+                if (isset($_POST['loc']) && ($_POST['loc'])) {
+                    $trangthai = $_POST['trangthai'];
+
+                } else {
+                    $trangthai = 0;
+                }
+                $listbooking =loadall_booking($trangthai);
                 include "quanlibooking/list.php";
                 break;
 
@@ -157,7 +164,6 @@ if(isset($_GET['act'])){
                     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                         $book= loadone_booking($_GET['id']);
                     }
-                    $listbooking = loadall_booking();
                     include "quanlibooking/updatebook.php";
                     break;
 
@@ -169,7 +175,7 @@ if(isset($_GET['act'])){
                     update_booking($id,$trangthai);
                     $thongbao="them thành công";
                 }
-                $listbooking = loadall_booking();
+                $listbooking =loadall_booking(0);
                 include "quanlibooking/list.php";
                 break;
 
@@ -177,7 +183,7 @@ if(isset($_GET['act'])){
                     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                         delete_booking($_GET['id']);
                     }
-                    $listbooking = loadall_booking();
+                    $listbooking =loadall_booking(0);
                     include "quanlibooking/list.php";
                     break;
 
@@ -228,14 +234,54 @@ if(isset($_GET['act'])){
 
 
 
-        //    case 'inhoadon':
-        //     if(isset($_GET['id'])){
-        //         $id = $_GET['id'];
-        //         $hoadon= hoadon($id);
-        //     }
+           case 'chitietdon':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $CT = loadone_booking($id);
+                extract($CT);
 
-        //     break;
+            }
+            include "quanlibooking/chitiet.php";
+              break;
 
+              case 'sendmailhoadon':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    $id = $_GET['id'];
+                    $CT = loadone_booking($id);
+                    extract($CT);
+                }
+                include "quanlibooking/sendmailhoadon.php";
+                  break;
+
+                  case 'sendmailbook':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        $id = $_GET['id'];
+                        $CT = loadone_booking($id);
+                        extract($CT);
+                    }
+                    include "quanlibooking/sendmailbook.php";
+                      break;
+
+                      case 'sendmailhuy':
+                        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                            $id = $_GET['id'];
+                            $CT = loadone_booking($id);
+                            extract($CT);
+                        }
+                        include "quanlibooking/sendmailhuy.php";
+                          break;
+                //   case 'sendmail':
+                //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                //         $id = $_GET['id'];
+                //         $CT = loadone_booking($id);
+                //         extract($CT);
+                //     }
+                //     include "quanlibooking/sendmail.php";
+                //       break;
+
+
+
+           
             
 
 
@@ -248,5 +294,3 @@ if(isset($_GET['act'])){
 
 
 include "footer.php";
-
-?>

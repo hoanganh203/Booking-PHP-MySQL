@@ -1,4 +1,3 @@
-<div class="Danhmuc__list">
             <div class="Danhmuc__content--table">
                 <form action="index.php?act=listsp" method="POST">
                     <select name="iddm">
@@ -19,15 +18,12 @@
                     if(isset($thongbao)&&($thongbao!=""))echo $thongbao;                   
                     ?>
 
-<div class="Danhmuc__content1">
             <input type="button" value="Chọn tất cả">
             <input type="button" value="Bỏ chọn tất cả">
             <input type="button" value="Xóa tất cả đã chọn">
             <a href="index.php?act=addsp"><input type="button" value="Nhập thêm"></a>
-        </div>
                 <table>
                     <tr>
-                        <th></th>
                         <th>Mã sản phẩm</th>
                         <th>Tên sản phẩm</th>
                         <th>Giá</th>
@@ -35,7 +31,7 @@
                         <th>Hình1</th>
                         <th>Hình2</th>
                         <th>Lượt xem</th>
-                        <th></th>
+                        <th>Chức năng</th>
                     </tr>
 
                     <?php
@@ -51,18 +47,21 @@
                         }else{
                             $hinh='no photo';
                         }
-                        echo ' <tr>
-                        <td><input type="checkbox" name="" id=""></td>
+                        echo '<tr>
                         <td>'.$id_xebook.'</td>
                         <td>'.$name.'</td>
-                        <td>'.$price.' $</td>
+                        <td>'.number_format($price).' Vnđ</td>
                         <td>'.$mota.' $</td>
                         <td>'.$hinh.'</td>
                         <td>'.$hinhphu.'</td>
                         <td>'.$luotxem.'</td>
 
-                        <td><a href="'.$suasp.'"><input type="button" value="Sửa"></a>
-                       <a href="'.$xoasp.'"><input type="button" value="Xóa"></a>
+                        <td><button>
+                        <span><a href="' . $suasp . '; ?>">Sửa</a></span>
+                    </button>
+                    <button>
+                        <span><a href="' . $xoasp. '; ?>">Xóa</a></span>
+                    </button>
                         </td>
                     </tr>
                         ';
@@ -72,13 +71,89 @@
 
                 
                 </table>
-            </div>
        
 
-        </div>
 
-        <style>
-            td{
-                border: 1px solid #ccc;
-            }
-        </style>
+ 
+                <style>
+    th:nth-child(1) {
+        width: 5%;
+    }
+
+    th:nth-child(2) {
+        width: 10%;
+    }
+
+    th:nth-child(3) {
+        width: 10%;
+    }
+
+    th:nth-child(4) {
+        width: 20%;
+    }
+
+    th:nth-child(5) {
+        width: 15%;
+    }
+
+    th:nth-child(6) {
+        width: 15%;
+    }
+
+    th:nth-child(7) {
+        width: 2%;
+    }
+
+    th:nth-child(8) {
+        width: 20%;
+    }
+
+    td:nth-child(1) {
+        width: 1%;
+        ;
+        text-align: center;
+    }
+
+    td:nth-child(2) {
+        width: 1%;
+        ;
+        text-align: center;
+    }
+
+    td:nth-child(3) {
+        width: 5%;
+        text-align: center;
+        ;
+    }
+
+    td:nth-child(4) {
+        width: 5%;
+        text-align: center;
+        ;
+    }
+
+    td:nth-child(5) {
+        width: 10%;
+        text-align: center;
+        ;
+    }
+
+    td:nth-child(6) {
+        width: 10%;
+        text-align: center;
+        ;
+    }
+
+    td:nth-child(7) {
+        width: 15%;
+        text-align: center;
+        ;
+        
+    }
+    td:nth-child(8) {
+        width: 5%;
+        text-align: center;
+        ;
+        
+    }
+</style>

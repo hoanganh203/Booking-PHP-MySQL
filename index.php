@@ -111,14 +111,13 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $id_user = $_POST['id_user'];
                 $id_xebook = $_POST['id_xebook'];
                 $date_book = $_POST['date_book'];
-                $time_book = $_POST['time_book'];
                 $time_nhan = $_POST['time_nhan'];
                 $note = $_POST['note'];
                 $trangthai = $_POST['trangthai'];
-                insert_booking($id_user,$id_xebook, $date_book,$time_book,$time_nhan,$note,$trangthai);
+                insert_booking($id_user,$id_xebook, $date_book,$time_nhan,$note,$trangthai);
                 include "khachhang/camon.php";
             }
-            $thongbao = "thành công";
+            $thongbao = "Đặt lịch thành công";
             break;
 
         case 'camon':
@@ -133,7 +132,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $id_user = 0;
             }
             $listCT = loadall_lichsu($id_user);
-            $listbooking = loadall_booking();
+            $listbooking =loadall_booking(0);
             include "khachhang/lichsubook.php";
             break;
 

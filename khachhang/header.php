@@ -340,7 +340,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
         }
 
         .header__user {
-            margin: -48px 0px -5px 0px;
+            margin: -48px 0px -5px -40px;
         }
 
         .log {

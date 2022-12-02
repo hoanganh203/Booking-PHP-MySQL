@@ -14,8 +14,6 @@ use PHPMailer\PHPMailer\Exception;
 
 function sendMail($email, $name, $title, $content){
     $mail = new PHPMailer(true);
-
-
     try {
         //Server settings
         $mail->SMTPDebug = 0;                      //Enable verbose debug output
@@ -23,13 +21,13 @@ function sendMail($email, $name, $title, $content){
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->CharSet    = 'utf8';
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'duongnam2703@gmail.com';                     //SMTP username
+        $mail->Username   = 'hoangmaph23084@gmail.com';                     //SMTP username
         $mail->Password   = 'qfdlzxjxortclxdk';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mail->setFrom('duongnam2703@gmail.com', 'Duongnam');
+        $mail->setFrom('hoangmaph23084@gmail.com', 'Duongnam');
         $mail->addAddress($email, $name);     //Add a recipient
         // $mail->addAddress('hoanpro1892003@gmail.com','Hoàng');               //Name is optional
         // $mail->addReplyTo('info@example.com', 'Information');

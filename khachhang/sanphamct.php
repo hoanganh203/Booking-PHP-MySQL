@@ -57,6 +57,7 @@
                 border: 1px solid;
                 margin: 0px 150px;
                 width: 500px;
+                color: black;
 
               }
 
@@ -174,10 +175,7 @@
                   </label>
                 </div>
                 <div class="input--item1">
-                <input type="date" name="date_book">
-                </div>
-                <div class="input--item1">
-                <input type="time" name="time_book">
+                <input type="datetime-local" name="date_book">
                 </div>
 
                 <input type="hidden" name="id_user" value="<?= $id_user ?>">
