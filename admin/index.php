@@ -1,4 +1,10 @@
 <?php
+// require 'admin/mail/PHPMailer/src/PHPMailer.php';
+// require '../mail/PHPMailer/src/PHPMailer.php';
+
+// require '../mail/PHPMailer/src/SMTP.php';
+
+// require '../mail/senmail.php';
 
 include "header.php";
 include "../modal/pdo.php";
@@ -219,6 +225,20 @@ if(isset($_GET['act'])){
                     $list_bl = load_binhluan();
                     include "./binh_luan/list.php";
                     break;
+
+
+
+        //    case 'inhoadon':
+        //     if(isset($_GET['id'])){
+        //         $id = $_GET['id'];
+        //         $hoadon= hoadon($id);
+        //     }
+
+        //     break;
+
+            
+
+
 
     }
 }else {

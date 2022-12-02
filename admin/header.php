@@ -18,6 +18,6 @@
                 <li><a  href="index.php?act=addsp">Sản Phẩm</a></li>
                 <li><a  href="index.php?act=taikhoan">QL_tàikhoan</a></li>
                 <li><a  href="index.php?act=booking">QL_Booking</a></li>
-                <li><a   href="index.php?act=dsbl">Bình luận</a></li>
+                <li><a   href="index.php?act=list_binhluan">Bình luận</a></li>
                 <li><a href="index.php?act=listthongke">Thống kê</a></li>
             </ul>

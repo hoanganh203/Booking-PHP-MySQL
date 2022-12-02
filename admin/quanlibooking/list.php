@@ -1,26 +1,7 @@
 
 
-
-<form action="index.php?act=booking" method="POST">
-<select name="trangthai">
-    <option value="0" selected>Tất cả</option>
-    <?php
-    foreach ($listbooking as $bk) {
-        extract($bk);
-        echo '<option value="' . $id . '">' . $trangthai . '</option>';
-    }
-    ?>
-</select>
-
-
-<input type="submit" name="listbook" value="Lọc">
-</form>
-<?php
-if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
-?>
-
-
 <table>
+    
     <tr class="domau">
         <th>ID_book</th>
         <th>ID_user</th>
@@ -40,7 +21,7 @@ if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
         $suabook = "index.php?act=suabook&id=" . $id;
 
         $xoabook = "index.php?act=xoabook&id=" . $id;
-        $inhoadon = "index.php?act=inhoadonk&id=" . $id;
+        // $inhoadon = "index.php?act=inhoadon&id=" . $id;
 
     ?>
 
@@ -132,7 +113,7 @@ if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
                 </td>
                 <td><a href="<?php echo '' . $suabook . ''; ?>"><button>sửa</button></a>
                     <a href="<?php echo '' . $xoabook . ''; ?>"><input type="button" value="Xóa"></a>
-                    <a href="<?php echo '' . $inhoadon . ''; ?>"><input type="button" value="In Đơn hàng"></a>
+                    <input type="button" value="In Đơn hàng" name="inhoadon">
                 </td>
             </tr>
             <style>
@@ -147,7 +128,6 @@ if (isset($thongbao) && ($thongbao != "")) echo $thongbao;
     <?php } ?>
 
 </table>
-
 
 
 <style>
