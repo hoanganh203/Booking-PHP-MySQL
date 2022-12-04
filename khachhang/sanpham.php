@@ -25,7 +25,7 @@
                              
                             </ul>
                             <div class="impl_fea_btn">
-                                <button class="impl_btn"><span class="impl_doller">$ '.number_format($price, 0, '', ',') .'</span><span class="impl_bnw">Add cart</span></button>
+                                <button class="impl_btn"><span class="impl_doller">'.number_format($price, 0, '', ',') .'</span><span class="impl_bnw">Add cart</span></button>
                             </div>
                             <div class="impl_fea_btn">
                             <a href="' . $datlich . '"><button class="impl_btn"><span class="impl_doller">Chi tiết</span><span class="impl_bnw">Booking</span></button></a>

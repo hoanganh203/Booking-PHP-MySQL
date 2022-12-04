@@ -21,13 +21,13 @@ use PHPMailer\PHPMailer\Exception;
         $mailhuy->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mailhuy->CharSet    = 'utf8';
         $mailhuy->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mailhuy->Username   = 'hoangmaph23084@gmail.com';                     //SMTP username
-        $mailhuy->Password   = 'dlaujylgakprmvdo';                               //SMTP password
+        $mailhuy->Username      = 'duongnam2703@gmail.com';                     //SMTP username
+        $mailhuy->Password      = 'pzyiggbirukoaotx';                             //SMTP password
         $mailhuy->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mailhuy->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mailhuy->setFrom('hoangmaph23084@gmail.com', 'Ô-TÔ Hoàng Sơn Nam Thông báo');
+        $mailhuy->setFrom('duongnam2703@gmail.com', 'Ô-TÔ Hoàng Sơn Nam Thông báo');
         $mailhuy->addAddress($email);     //Add a recipient
         // $mailhuy->addAddress('hoanpro1892003@gmail.com','Hoàng');               //Name is optional
         // $mailhuy->addReplyTo('info@example.com', 'Information');

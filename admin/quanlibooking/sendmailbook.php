@@ -21,13 +21,13 @@ use PHPMailer\PHPMailer\Exception;
         $mailbook->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mailbook->CharSet    = 'utf8';
         $mailbook->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mailbook->Username   = 'hoangmaph23084@gmail.com';                     //SMTP username
-        $mailbook->Password   = 'dlaujylgakprmvdo';                               //SMTP password
+        $mailbook->Username   = 'duongnam2703@gmail.com';                     //SMTP username
+        $mailbook->Password   = 'pzyiggbirukoaotx';                               //SMTP password
         $mailbook->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mailbook->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mailbook->setFrom('hoangmaph23084@gmail.com', 'Ô-TÔ Hoàng Sơn Nam Thông báo');
+        $mailbook->setFrom('duongnam2703@gmail.com', 'Ô-TÔ Hoàng Sơn Nam Thông báo');
         $mailbook->addAddress($email);     //Add a recipient
         // $mailbook->addAddress('hoanpro1892003@gmail.com','Hoàng');               //Name is optional
         // $mailbook->addReplyTo('info@example.com', 'Information');

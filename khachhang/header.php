@@ -227,7 +227,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
                                                 <div class="content">
                                                     <a href="#" class="title">Bugatti Veyron</a>
                                                     <p class="quantity">Quantity: 1</p>
-                                                    <span class="price">$4500.00</span>
+                                                    <span class="price">4500.000 đ</span>
                                                 </div>
                                                 <div class="button-x">
                                                     <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -240,7 +240,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
                                                 <div class="content">
                                                     <a href="#" class="title">Chevrolet Corvette</a>
                                                     <p class="quantity">Quantity: 1</p>
-                                                    <span class="price">$900.00</span>
+                                                    <span class="price">900.000 đ</span>
                                                 </div>
                                                 <div class="button-x">
                                                     <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -248,7 +248,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
                                             </div>
                                             <div class="summary">
                                                 <div class="subtotal">Sub Total</div>
-                                                <div class="price-s">$5100.0</div>
+                                                <div class="price-s">5100.000 đ</div>
                                             </div>
                                             <div class="cart-buttons">
                                                 <a href="checkout.html" class="btn impl_btn">View Cart</a>

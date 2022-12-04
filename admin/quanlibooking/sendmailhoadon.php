@@ -21,13 +21,13 @@ use PHPMailer\PHPMailer\Exception;
         $mailhoadon->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mailhoadon->CharSet    = 'utf8';
         $mailhoadon->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mailhoadon->Username   = 'hoangmaph23084@gmail.com';                     //SMTP username
-        $mailhoadon->Password   = 'dlaujylgakprmvdo';                               //SMTP password
+        $mailhoadon->Username   = 'duongnam2703@gmail.com';                     //SMTP username
+        $mailhoadon->Password   = 'pzyiggbirukoaotx'; //SMTP password
         $mailhoadon->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mailhoadon->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mailhoadon->setFrom('hoangmaph23084@gmail.com', 'Ô-TÔ Hoàng Sơn Nam Thông báo');
+        $mailhoadon->setFrom('duongnam2703@gmail.com', 'Ô-TÔ Hoàng Sơn Nam Thông báo');
         $mailhoadon->addAddress($email);     //Add a recipient
         // $mailhoadon->addAddress('hoanpro1892003@gmail.com','Hoàng');               //Name is optional
         // $mailhoadon->addReplyTo('info@example.com', 'Information');
