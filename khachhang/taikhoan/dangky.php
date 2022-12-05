@@ -59,34 +59,34 @@
 }
 </style>
 
-  <form action="index.php?act=dangky" method="post" enctype="multipart/form-data">
+  <form action="index.php?act=dangky" method="post" enctype="multipart/form-data" >
 
     <div class="input--item1">
-      <input type="email" name="email" class="form-input" placeholder=" ">
+      <input type="email" name="email" class="form-input" placeholder=" " required>
       <label for="name" class="form-label">
             Email
         </label>
     </div>
     <div class="input--item1">
-      <input type="text" name="user" class="form-input" placeholder=" ">
+      <input type="text" name="user" class="form-input" placeholder=" " required>
       <label for="name" class="form-label">
             Tên đăng nhập
         </label>
     </div>
     <div class="input--item1">
-      <input type="password" name="pass" class="form-input" placeholder=" ">
+      <input type="password" name="pass" class="form-input" placeholder=" " required>
       <label for="name" class="form-label">
             Password
         </label>
     </div>
     <div class="input--item1">
-      <input type="text" name="address" class="form-input" placeholder=" ">
+      <input type="text" name="address" class="form-input" placeholder=" " required>
       <label for="name" class="form-label">
             Address
         </label>
     </div>
     <div class="input--item1">
-      <input type="text" name="tel" class="form-input" placeholder=" ">
+      <input type="text" name="tel" class="form-input" placeholder=" " required>
       <label for="name" class="form-label">
             tel
         </label>
@@ -94,8 +94,8 @@
     <div class="input--item2">
 
       <h3>Hình ảnh <br></h3>
-      <input type="file" name="img"> <br>
-      <input type="hidden" name="id" value="<? $id ?>">
+      <input type="file" name="img" required> <br>
+      <input type="hidden" name="id" value="<? $id ?>" required>
     </div>
     <div class="input--item3">
 
@@ -104,6 +104,7 @@
 
     </div>
   </form>
+
   <div class="thongbao">
     <?php
 

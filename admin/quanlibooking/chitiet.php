@@ -75,11 +75,11 @@ $quayve = "index.php?act=booking";
 
 
     th:nth-child(1) {
-        width: 1%;
+        width: 5%;
     }
 
     th:nth-child(2) {
-        width: 15%;
+        width: 5%;
     }
 
     th:nth-child(3) {
@@ -91,50 +91,63 @@ $quayve = "index.php?act=booking";
     }
 
     th:nth-child(5) {
-        width: 20%;
+        width: 5%;
     }
 
     th:nth-child(6) {
-        width: 15%;
+        width: 5%;
     }
 
     th:nth-child(7) {
+        width: 5%;
+    }
+
+    th:nth-child(8) {
         width: 15%;
+    }
+    
+    th:nth-child(9) {
+        width: 10%;
     }
 
 
     td:nth-child(1) {
-        width: 1%;
-        ;
+        width: 2%;
         text-align: center;
     }
 
     td:nth-child(2) {
-        width: 9%;
+        width: 2%;
         ;
         text-align: center;
     }
 
     td:nth-child(3) {
-        width: 10%;
+        width: 5%;
         text-align: center;
         ;
     }
 
     td:nth-child(4) {
-        width: 10%;
+        width: 5%;
         text-align: center;
         ;
     }
 
     td:nth-child(5) {
-        width: 15%;
+        width: 7%;
         text-align: center;
         ;
     }
 
     td:nth-child(6) {
-        width: 15%;
+        width: 7%;
+        text-align: center;
+        ;
+    }
+
+    td:nth-child(7) {
+        width: 10%;
         text-align: center;
         ;
     }

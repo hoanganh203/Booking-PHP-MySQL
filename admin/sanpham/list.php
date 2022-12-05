@@ -57,10 +57,10 @@
                         <td>'.$luotxem.'</td>
 
                         <td><button>
-                        <span><a href="' . $suasp . '; ?>">Sửa</a></span>
+                        <span><a href="' . $suasp . ';">Sửa</a></span>
                     </button>
                     <button>
-                        <span><a href="' . $xoasp. '; ?>">Xóa</a></span>
+                        <span><a href="' . $xoasp. ';">Xóa</a></span>
                     </button>
                         </td>
                     </tr>

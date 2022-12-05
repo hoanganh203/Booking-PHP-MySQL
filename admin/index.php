@@ -270,6 +270,16 @@ if(isset($_GET['act'])){
                         }
                         include "quanlibooking/sendmailhuy.php";
                           break;
+
+                          case 'hoadon':
+                            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                                $id = $_GET['id'];
+                                $CT = loadone_booking($id);
+                                extract($CT);
+                            }
+                            include "quanlibooking/hoadon.php";
+                              break;
+
                 //   case 'sendmail':
                 //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 //         $id = $_GET['id'];

@@ -43,9 +43,18 @@
                         <textarea name="mota"  cols="30" rows="10"></textarea>
                     </div>
                     <div class="Danhmuc__content1">
-                        <input type="submit" value="THÊM MỚI" name="themmoi">
-                        <input type="reset" value="NHẬP LẠI">
-                        <a href="index.php?act=listsp"><input type="button" value="DANH SÁCH"></a>
+                        <button type="submit" name="themmoi">
+                            Thêm mới
+                        </button>
+                     
+                        <button type="reset">
+                            Nhập lại
+                        </button>
+                        
+                        <a href="index.php?act=listsp">
+                        <button type="button">
+                           Danh sách
+                        </button></a>
                     </div>
 
                     <?php 
@@ -56,3 +65,15 @@
                 </form>
             </div>
         </div>
+
+        <style>
+  form{
+    display: flex;
+    margin: 0px 66px;
+    width: 100%;
+  }
+
+  button{
+    cursor: pointer;
+  }
+</style>

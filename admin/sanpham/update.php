@@ -42,7 +42,7 @@
                     </div>
                     <div class="Danhmuc__content-tl  mb  input--item">
                         Giá <br>
-                        <input type="text" name="giasp" id="" value="<?=$price?>">
+                        <input type="text" name="giasp" id="" value="<?=number_format($price)?>">
                     </div>
                     <div class="Danhmuc__content-tl  mb  input--item">
                         Hình ảnh1 <br>
@@ -62,9 +62,18 @@
                     </div>
                     <div class="Danhmuc__content1">
                     <input type="hidden" name="id_xebook" value="<?=$id_xebook?>">
-                        <input type="submit" value="Cập Nhật" name="capnhat">
-                        <input type="reset" value="NHẬP LẠI">
-                        <a href="index.php?act=listsp"><input type="button" value="DANH SÁCH"></a>
+                    <button type="submit" name="capnhat">
+                            Cập nhât
+                        </button>
+                     
+                        <button type="reset">
+                            Nhập lại
+                        </button>
+                        
+                        <a href="index.php?act=listsp">
+                        <button type="button">
+                           Danh sách
+                        </button></a>
                     </div>
 
                    
@@ -73,3 +82,15 @@
                 </form>
             </div>
         </div>
+
+        <style>
+              form{
+                margin: 0px 10px;
+    display: flex;
+    width: 100%;
+  }
+
+  button{
+    cursor: pointer;
+  }
+        </style>

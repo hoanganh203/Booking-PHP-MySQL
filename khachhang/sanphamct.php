@@ -15,26 +15,22 @@
                 <div class="impl_buycar_wrapper">
                   <div class="impl_buycar_color" id="color_car">
                     <div class="slider slider-for1">
-                      <div><img src="<?= $hinhsp ?>" alt=""></div>
+                      <img src="<?= $hinhsp ?>" alt="">
                     </div>
                     <div class="slider slider-nav1">
                     <div><span class="car_color car_clr2"><img src="<?=$hinhphu?>" alt="" class="img-fluid impl_hover_car_img" ></span></div>
 
-                      <div><span class="car_color car_clr3"></span></div>
-                      <div><span class="car_color car_clr4"></span></div>
-                      <div><span class="car_color car_clr5"></span></div>
-                      <div><span class="car_color car_clr6"></span></div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="impl_buycar_data">
-                <h1><?= $name ?></h1>
-                <h1>$<?= $price ?></h1>
+                <h1> Tên xe :<?= $name ?></h1>
+                <h1> Giá xe :<?= number_format($price, 0, '', ',') ?> Vnđ</h1>
                 <div class="car_emi_wrapper">
-                  <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i>Hãng xe : <?= $name1 ?></a>
+                  <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i>Thuộc Hãng xe : <?= $name1 ?></a>
                 </div>
-                <p><?= $mota ?></p>
+                <p> Mô tả : <?= $mota ?></p>
                 <div class="impl_old_buy_btn">
                   <a href="checkout.html" class="impl_btn">add to cart</a>
                   <a href="index.php" class="impl_btn">Back</a>
@@ -44,12 +40,14 @@
           </div>
           <div class="maps">
   <center>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8639810443356!2d105.74459841485445!3d21.03812778599324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b991d80fd5%3A0x53cefc99d6b0bf6f!2sFPT%20Polytechnic%20Hanoi!5e0!3m2!1sen!2s!4v1669743581714!5m2!1sen!2s" width="800" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8639810443356!2d105.74459841485445!3d21.03812778599324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b991d80fd5%3A0x53cefc99d6b0bf6f!2sFPT%20Polytechnic%20Hanoi!5e0!3m2!1sen!2s!4v1669743581714!5m2!1sen!2s" width="800" height="300" style="border:0; margin: 50px 0px 0px 0px; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </center>
 
       
 
             <style>
+
+
         
               .input--item1 input {
                 padding: 5px 25px;
@@ -141,7 +139,7 @@
               }
 
               .form_all{
-                margin: 50px 0px 0px 360px ;
+                margin: 50px 0px 0px 291px ;
                 border: 1px solid #fff;
                 width: 800px;
                 padding: 30px 0px;
@@ -174,8 +172,10 @@
                     Note book
                   </label>
                 </div>
-                <div class="input--item1">
-                <input type="datetime-local" name="date_book">
+                <div class="input--item1" >
+                <input type="datetime-local" name="date_book" required
+                min="2022-12-05T00:00"
+                >
                 </div>
 
                 <input type="hidden" name="id_user" value="<?= $id_user ?>">

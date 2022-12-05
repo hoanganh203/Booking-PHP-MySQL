@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 02, 2022 lúc 11:02 PM
+-- Thời gian đã tạo: Th12 05, 2022 lúc 09:47 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -43,7 +43,8 @@ INSERT INTO `binh_luan` (`ma_bl`, `noi_dung`, `id_xebook`, `id_user`, `ngay_bl`)
 (8, 'dfdfd', 201, 107, '09:20:38am 30/11/2022'),
 (9, 'fgfdgf', 201, 107, '09:49:44am 30/11/2022'),
 (10, 'ok', 201, 99, '06:05:11pm 30/11/2022'),
-(11, 'qưq', 201, 99, '10:23:51pm 02/12/2022');
+(11, 'qưq', 201, 99, '10:23:51pm 02/12/2022'),
+(12, 'ok', 200, 99, '09:32:56am 05/12/2022');
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,9 @@ INSERT INTO `booking` (`id`, `id_user`, `id_xebook`, `date_book`, `time_book`, `
 (33, 105, 201, '', '', '03-12-2022 03:30:12am', '', 2),
 (34, 105, 201, '', '', '03-12-2022 03:30:19am', '', 1),
 (35, 105, 201, '', '', '03-12-2022 03:30:39am', '', 2),
-(36, 99, 201, '2022-12-03T16:02', '', '03-12-2022 04:20:40am', 'cần gấp', 3);
+(36, 99, 201, '2022-12-03T16:02', '', '03-12-2022 04:20:40am', 'cần gấp', 3),
+(37, 99, 200, '2022-12-22T17:23', '', '05-12-2022 14:36:37pm', 'ok', 3),
+(39, 99, 201, '', '', '05-12-2022 15:19:00pm', '', 2);
 
 -- --------------------------------------------------------
 
@@ -160,7 +163,8 @@ INSERT INTO `taikhoan` (`id_user`, `user`, `pass`, `address`, `tel`, `role`, `em
 (105, 'Thủy vũ', '123', 'bình phú', '123', 'Khách hàng', 'hoangmaph23084@gmail.com', '022fa8c4-20200820_062918.jpg', 1),
 (106, '123', '123', 'askdnjasd', '3r5', 'Khách hàng', 'duchaph23096@fpt.edu.vn', '', 1),
 (107, 'sonnvph23193', '123', 'sdfsdfsdfsdfsdf', '23423423423423', 'Khách hàng', 'sonnvph23193@fpt.edu.vn', '179240273_499895794533660_705655134895374799_n.jpg', 2),
-(108, 'Lê Xuân trường', '123', 'Hưng yên - Việt Nam', '0387200053', 'Khách hàng', 'lexuantruong46203@gmail.com', '68ff9a1487dc1c2cc8516b4a58091cb4.jpg', 1);
+(108, 'Lê Xuân trường', '123', 'Hưng yên - Việt Nam', '0387200053', 'Khách hàng', 'lexuantruong46203@gmail.com', '68ff9a1487dc1c2cc8516b4a58091cb4.jpg', 1),
+(124, '1222', '123', 'Hưng yên - Việt Nam', '0387200053', 'Khách hàng', 'duchaph23096@fpt.edu.vn', '3.jpg', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -205,13 +209,13 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
-  MODIFY `ma_bl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ma_bl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
@@ -223,13 +227,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id_xebook` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id_xebook` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

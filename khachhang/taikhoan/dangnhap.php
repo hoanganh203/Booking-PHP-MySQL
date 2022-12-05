@@ -3,13 +3,13 @@
     <h1>Đăng nhập</h1>
 <form action="index.php?act=dangnhap" method="POST">
 <div class="input--item1">
-    <input type="text" name="user" class="form-input" placeholder=" ">
+    <input type="text" name="user" class="form-input" placeholder=" " required>
     <label for="name" class="form-label">
         Tên đăng nhập
     </label>
 </div>
 <div class="input--item1">
-    <input type="password" name="pass" class="form-input" placeholder=" ">
+    <input type="password" name="pass" class="form-input" placeholder=" " required>
     <label for="name" class="form-label">
         Password
     </label>

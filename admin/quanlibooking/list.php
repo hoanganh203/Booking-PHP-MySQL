@@ -44,7 +44,7 @@
         $sendmailhoadon = "index.php?act=sendmailhoadon&id=" . $id;
         $sendmailbook = "index.php?act=sendmailbook&id=" . $id;
         $sendmailhuy = "index.php?act=sendmailhuy&id=" . $id;
-
+        $hoadon = "index.php?act=hoadon&id=" . $id;
 
     ?>
 
@@ -206,6 +206,9 @@
                  
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $sendmailhoadon . ''; ?>">Mail HĐ</a></span>
+                        </button>
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $hoadon . ''; ?>">Hóa đơn</a></span>
                         </button>
                 </td>
             </tr>

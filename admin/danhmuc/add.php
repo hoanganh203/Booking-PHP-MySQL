@@ -17,4 +17,10 @@
             </section>
         </div>
     </body>
-</html>
+
+<style>
+  form{
+    margin: 0px 566px;
+    width: 100%;
+  }
+</style>
