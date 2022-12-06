@@ -1,15 +1,17 @@
 
-<div class="form_all">
+<div class="form_all" >
+
     <h1>Đăng nhập</h1>
 <form action="index.php?act=dangnhap" method="POST">
+<p class="err" style='color: red;' ><?php if(!empty($err)) echo $err?></p>
 <div class="input--item1">
-    <input type="text" name="user" class="form-input" placeholder=" " required>
+    <input type="text" name="user" class="form-input" placeholder=" " >
     <label for="name" class="form-label">
         Tên đăng nhập
     </label>
 </div>
 <div class="input--item1">
-    <input type="password" name="pass" class="form-input" placeholder=" " required>
+    <input type="password" name="pass" class="form-input" placeholder=" " >
     <label for="name" class="form-label">
         Password
     </label>
@@ -47,6 +49,7 @@ if (isset($thongbao) && ($thongbao != "")) {
 
     .form_all h1{
         text-align: center;
+        margin: 0px 0px 0px -123px;
     }
     .form-input{
     width: 300px;
@@ -54,6 +57,7 @@ if (isset($thongbao) && ($thongbao != "")) {
     padding: 0px 20px;
     border: 1px solid blue;
     outline: none;
+    
 }
 .input--item3 input{
     margin: 5px 0px;

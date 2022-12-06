@@ -1,6 +1,6 @@
   <div class="form_all">
   <h1>Cập nhật tài khoản</h1>
-
+  <p class="err" style='color: red;'><?php if(!empty($err)) echo $err?></p>
   <?php
   if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
     extract($_SESSION['user']);
@@ -9,12 +9,18 @@
   ?>
 
 <style>
+
+  .err{
+    text-align: center;
+    margin: 0px 0px 0px -123px;
+  }
       .form_all{
         margin: 50px 178px 100px 238px;
     }
 
     .form_all h1{
-        text-align: center;
+      text-align: center;
+      margin: 0px 0px 0px -123px;
     }
   .form-input{
     width: 300px;
@@ -59,21 +65,21 @@
 
   <form action="index.php?act=edit_taikhoan" method="post" enctype="multipart/form-data">
     <div class="input--item1">
-      <input type="email" class="form-input" name="email" value="<?= $email ?>" placeholder=" ">
+      <input type="email" class="form-input" name="email" value="<?= $email ?>" placeholder=" " value="<?php if(!empty($_POST['email'])) echo $_POST['email'] ?>">
       <label for="name" class="form-label">
             Email
         </label>
     </div>
     <div class="input--item1">
    
-    <input type="text" name="user" class="form-input" value="<?= $user ?>" placeholder=" ">
+    <input type="text" name="user" class="form-input" value="<?= $user ?>" placeholder=" " value="<?php if(!empty($_POST['user'])) echo $_POST['user'] ?>">
         <label for="name" class="form-label">
             Tên đăng nhập
 </label>
     </div>
     <div class="input--item1">
     
-    <input type="password" name="pass" class="form-input" value="<?= $pass ?>" placeholder=" ">
+    <input type="password" name="pass" class="form-input" value="<?= $pass ?>" placeholder=" " value="<?php if(!empty($_POST['pass'])) echo $_POST['pass'] ?>">
         <label for="name" class="form-label">
             Password
         </label>
@@ -81,7 +87,7 @@
     </div>
     <div class="input--item1">
    
-    <input type="text" name="address" class="form-input" value="<?= $address ?>" placeholder=" ">
+    <input type="text" name="address" class="form-input" value="<?= $address ?>" placeholder=" " value="<?php if(!empty($_POST['address'])) echo $_POST['address'] ?>">
         <label for="name" class="form-label">
             Địa chỉ
         </label>
@@ -89,7 +95,7 @@
     </div>
     <div class="input--item1">
     
-    <input type="text" name="tel" class="form-input" value="<?= $tel ?>" placeholder=" ">
+    <input type="text" name="tel" class="form-input" value="<?= $tel ?>" placeholder=" " value="<?php if(!empty($_POST['tel'])) echo $_POST['tel'] ?>">
         <label for="name" class="form-label">
             Số điện thoại
         </label>
@@ -98,7 +104,7 @@
     <div class="input--item1">
     <h3> Hình ảnh</h3>
    
-    <input type="file" name="img">
+    <input type="file" name="img" required>
     </div>
     <input type="hidden" name="id_user" value="<?= $id_user ?>">
 

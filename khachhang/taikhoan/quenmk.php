@@ -71,7 +71,6 @@
     <div class="input--item3">
   
   <input type="submit" value="Gửi" name="guiemail">
-  <input type="reset" value="Nhập lại">
     </div>
 </form>
 </div>

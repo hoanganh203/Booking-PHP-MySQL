@@ -39,6 +39,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             break;
 
         case 'dangky':
+
             if (isset($_POST['dangky']) && ($_POST['dangky'])) {
                 $email = $_POST['email'];
                 $user = $_POST['user'];
@@ -49,11 +50,25 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $target_dir = "uploaduser/";
                 $target_file = $target_dir . basename($_FILES["img"]["name"]);
                 if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)); {
-                }
+                } if ($email == "") {
+                    $err = 'Email không được để trống';
+                } else if ($user == "")   {
+                    $err = 'Tên của bạn không trống';
+                } else if ($pass == "") {
+                    $err = 'Mật khẩu không được để trống';
+                } else if (strlen($pass) < 8) {
+                    $err = "Mật khẩu phải nhiều hơn 8 ký tự";
+                }else if ($address== "") {
+                    $err ='Địa chỉ của bạn không được để trống';
+                }else if ($tel== "") {
+                    $err ='SDT của bạn không được để trống';
+                } else {
                 insert_taikhoan($email,$user,$pass,$address,$tel,$img);
                 include "khachhang/taikhoan/dangnhap.php";
                 break;
             }
+        }
+        
             include "khachhang/taikhoan/dangky.php";
             
             break;
@@ -62,6 +77,11 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
+                if ($user == "") {
+                    $err = 'Tên tài khoản không được để trống';
+                } else if ($pass == "") {
+                    $err = 'Mật khẩu không được để trống';
+                }else {
                 $checkuser = checkuser($user, $pass);
                 if (is_array($checkuser)) {
                     $_SESSION['user'] = $checkuser;
@@ -72,6 +92,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $thongbao = "tài khoản không tồn tại";
                 }
             }
+        }
             include "khachhang/taikhoan/dangnhap.php";
             break;
 
@@ -85,10 +106,26 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $tel = $_POST['tel'];
                 $email = $_POST['email'];
                 $id_user = $_POST['id_user'];
+                if ($email == "") {
+                    $err = 'Email không được để trống';
+                } else if ($user == "")   {
+                    $err = 'Tên của bạn không trống';
+                } else if ($pass == "") {
+                    $err = 'Mật khẩu không được để trống';
+                } else if (strlen($pass) < 8) {
+                    $err = "Mật khẩu phải nhiều hơn 8 ký tự";
+                }else if ($address== "") {
+                    $err ='Địa chỉ của bạn không được để trống';
+                }else if ($tel== "") {
+                    $err ='SDT của bạn không được để trống';
+                }else{
+
+                
                 update_taikhoan($id_user, $user, $pass, $email, $address, $tel);
                 $_SESSION['user'] = checkuser($user, $pass);
                 header('Location: index.php?edit_taikhoan');
             }
+        }
             include "khachhang/taikhoan/edit_taikhoan.php";
             break;
 
@@ -113,10 +150,16 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $date_book = $_POST['date_book'];
                 $time_nhan = $_POST['time_nhan'];
                 $note = $_POST['note'];
-                $trangthai = $_POST['trangthai'];
-                insert_booking($id_user,$id_xebook, $date_book,$time_nhan,$note,$trangthai);
+                if ($note == "") {
+                    $err = 'Ghi chú không được để trống';
+                } else if ($date_book == "")   {
+                    $err = 'Tên của bạn không trống';
+                }else{
+                insert_booking($id_user,$id_xebook, $date_book,$time_nhan,$note);
                 include "khachhang/camon.php";
             }
+        }
+            include "khachhang/camon.php";
             $thongbao = "Đặt lịch thành công";
             break;
 

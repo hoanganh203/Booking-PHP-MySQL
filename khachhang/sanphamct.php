@@ -1,6 +1,14 @@
+
         <?php
 
-        $date = getdate();
+      $date = getdate();
+      if ($date['mday'] < 10) {
+      $today =  "0" . $date['mday'];
+      } else {
+      $today =  $date['mday'];
+      }
+      $getToday = [$date['year'], $date['mon'], $today];
+      $minDate = implode('-', $getToday);
 
         extract($onesp);
         $hinhsp = "images/" . $img;
@@ -42,6 +50,7 @@
   <center>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8639810443356!2d105.74459841485445!3d21.03812778599324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b991d80fd5%3A0x53cefc99d6b0bf6f!2sFPT%20Polytechnic%20Hanoi!5e0!3m2!1sen!2s!4v1669743581714!5m2!1sen!2s" width="800" height="300" style="border:0; margin: 50px 0px 0px 0px; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </center>
+  <p class="err" style='color: red;'><?php if(!empty($err)) echo $err?></p>
 
       
 
@@ -139,9 +148,9 @@
               }
 
               .form_all{
-                margin: 50px 0px 0px 291px ;
+                margin: 50px 0px 0px 355px ;
                 border: 1px solid #fff;
-                width: 800px;
+                width: 804px;
                 padding: 30px 0px;
               }
 
@@ -163,18 +172,20 @@
               <div class="form_all">
 
                <h1>Đặt lịch xem xe</h1>
+               
               <form action="index.php?act=book" method="POST" enctype="multipart/form-data">
                <h3> Bạn muốn đặt xe <span><?= $name ?></span></h3>
-               
+              
                 <div class="input--item1">
                   <input type="text" name="note" class="form-input" placeholder=" ">
-                  <label for="name" class="form-label">
+                  <label for="name" class="form-label" value="<?php if(!empty($_POST['note'])) echo $_POST['note'] ?>">
                     Note book
                   </label>
+                  
                 </div>
                 <div class="input--item1" >
-                <input type="datetime-local" name="date_book" required
-                min="2022-12-05T00:00"
+                <input type="date" name="date_book" value="<?php if(!empty($_POST['date_book'])) echo $_POST['date_book'] ?>"
+                min="<?php echo $minDate ?>"
                 >
                 </div>
 
@@ -199,8 +210,8 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
-                $("#binhluan").load("./khachhang/comment/form_cmt.php", {
-                    id_product: <?= $id_xebook ?>
+                $("#binhluan").load("./khachhang/comment/form_cmt.php?id_xebook=<?php echo $id_xebook?>", {
+                    $idpro: <?= $id_xebook ?>
                 });
             });
         </script>

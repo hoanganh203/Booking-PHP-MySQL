@@ -5,10 +5,11 @@ include "../../modal/binh_luan.php";
 session_start();
 
 
-$idpro = $_REQUEST['id_product'];
+$id_xebook = '';
 
-$dsbl = load_all_binhluan($idpro);
+$dsbl = load_all_binhluan($id_xebook);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,7 @@ $dsbl = load_all_binhluan($idpro);
                     extract($show);
                     echo '
                     <li class="my-3">
-                        <span class="font-bold text-[18px]">' . $id_user . ': &nbsp</span>
+                        <span class="font-bold text-[18px]">' . $user . ': &nbsp</span>
                         <span class="italic underline text-[18px]">'.$noi_dung.'</span>
                         <span class="font-normal ml-2 text-[12px]">('.$ngay_bl.')</span>
                     </li> 
@@ -53,8 +54,10 @@ $dsbl = load_all_binhluan($idpro);
             <div class=" px-7 w-[100%]  bg-white p-4">
                 <p class="text-xl font-semibold text-blue-900 transition-all hover:text-black">Viết bình luận cho sản phẩm</p>
                 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-                    <input type="hidden" name="idpro" value="<?= $idpro ?>">
+                    <input type="hidden" name="id_xebook" value="<?= $id_xebook ?>">
                     <input name="noidung_binhluan" required class="h-20 px-3 text-sm py-1 mt-5 outline-none border-pink-300 w-full resize-none border rounded-lg placeholder:text-sm " placeholder="Viết bình luận cho sản phẩm">
+                    <input type="hidden" name="id_xebook" value="<?= $id_xebook ?>">
+                    
                     <div class="flex justify-between mt-2">
                         <?php
                         if (isset($_SESSION['user'])) {
@@ -77,9 +80,12 @@ $dsbl = load_all_binhluan($idpro);
         <?php
         if (isset($_POST['gui_binhluan'])) {
             $noi_dung = $_POST['noidung_binhluan'];
-            $id_xebook = $_POST['idpro'];
+            $id_xebook = $_POST['id_xebook'];
             $id_user = $_SESSION['user']['id_user'];
-            $ngay_bl = date('h:i:sa d/m/Y');
+            $ngay_bl = date('d/m/Y H:i:sa ');         
+            $id_xebook = $_GET['idsp'];
+            echo $id_xebook;
+
             insert_binhluan($noi_dung, $id_xebook, $id_user, $ngay_bl);
             header("location: " . $_SERVER['HTTP_REFERER']);
         }

@@ -217,9 +217,9 @@ if(isset($_GET['act'])){
                 $list_thongke= load_all_thongke();
                 include "thongke/list.php";
                 break;
-            
+            // bình luận
             case 'list_binhluan':
-                $list_bl = load_binhluan();
+                $list_binhluan = load_binhluan();
                 include "../admin/binh_luan/list.php";
                    break;
         
@@ -228,7 +228,7 @@ if(isset($_GET['act'])){
                     $ma_bl = $_GET['ma_bl'];
                     delete_binhluan($ma_bl);
                 }
-                    $list_bl = load_binhluan();
+                    $list_binhluan = load_binhluan();
                     include "./binh_luan/list.php";
                     break;
 

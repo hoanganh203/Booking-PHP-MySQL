@@ -9,11 +9,11 @@
                     <th class="py-2 text-xl text-gray-500">
                         Nội dung
                     </th>
-                    <th class="py-2 text-xl text-gray-500">
+                    <!-- <th class="py-2 text-xl text-gray-500">
                         Mã sp
-                    </th>
+                    </th> -->
                     <th class="py-2 text-xl text-gray-500">
-                        Mã kh
+                        tên khách hàng
                     </th>
                     <th class="py-2 text-xl text-gray-500">
                         Ngày bình luận
@@ -50,7 +50,7 @@
             </tr> -->   
 
                 <?php
-                foreach ($list_bl as $show) {
+                foreach ($list_binhluan as $show) {
                     extract($show);
 
                     //tao bien sua, xoa
@@ -60,21 +60,17 @@
                     echo '
                         <tr class="whitespace-nowrap">
                             <td class="pl-24 py-4 text-sm text-gray-500">
-                                ' . $id_xebook . '
+                                ' . $ma_bl . '
                             </td>
                             <td class="pl-24 py-4">
                                 <div class="text-sm text-gray-900">
                                     ' . $noi_dung . '
                                 </div>
                             </td>
+                           
                             <td class="pl-24 py-4">
                                 <div class="text-sm text-gray-900">
-                                    ' . $id_xebook . '
-                                </div>
-                            </td>
-                            <td class="pl-24 py-4">
-                                <div class="text-sm text-gray-900">
-                                    ' . $id_user . '
+                                    ' . $user . '
                                 </div>
                             </td>
                             <td class="pl-24 py-4">
