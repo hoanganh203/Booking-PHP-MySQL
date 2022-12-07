@@ -7,13 +7,13 @@
                         Mã bl
                     </th>
                     <th class="py-2 text-xl text-gray-500">
-                        Nội dung
+                        Tên kh
                     </th>
-                    <!-- <th class="py-2 text-xl text-gray-500">
-                        Mã sp
-                    </th> -->
                     <th class="py-2 text-xl text-gray-500">
-                        tên khách hàng
+                        Tên xe
+                    </th>
+                    <th class="py-2 text-xl text-gray-500">
+                        Nội dung
                     </th>
                     <th class="py-2 text-xl text-gray-500">
                         Ngày bình luận
@@ -50,7 +50,7 @@
             </tr> -->   
 
                 <?php
-                foreach ($list_binhluan as $show) {
+                foreach ($list_bl as $show) {
                     extract($show);
 
                     //tao bien sua, xoa
@@ -58,21 +58,24 @@
                     $xoa_binhluan = "index.php?act=xoa_binhluan&ma_bl=" . $ma_bl;
                     //
                     echo '
-                        <tr class="whitespace-nowrap">
+                    <tr class="whitespace-nowrap">
+                    <td class="pl-24 py-4 text-sm text-gray-500">
+                        ' . $ma_bl . '
+                    </td>
                             <td class="pl-24 py-4 text-sm text-gray-500">
-                                ' . $ma_bl . '
+                                ' . $user . '
                             </td>
+                            <td class="pl-24 py-4">
+                            <div class="text-sm text-gray-900">
+                                ' . $name . '
+                            </div>
+                        </td>
                             <td class="pl-24 py-4">
                                 <div class="text-sm text-gray-900">
                                     ' . $noi_dung . '
                                 </div>
                             </td>
-                           
-                            <td class="pl-24 py-4">
-                                <div class="text-sm text-gray-900">
-                                    ' . $user . '
-                                </div>
-                            </td>
+                        
                             <td class="pl-24 py-4">
                                 <div class="text-sm text-gray-900">
                                     ' . $ngay_bl . '

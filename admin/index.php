@@ -219,7 +219,7 @@ if(isset($_GET['act'])){
                 break;
             // bình luận
             case 'list_binhluan':
-                $list_binhluan = load_binhluan();
+                $list_bl = load_all_binhluan();
                 include "../admin/binh_luan/list.php";
                    break;
         
@@ -228,8 +228,8 @@ if(isset($_GET['act'])){
                     $ma_bl = $_GET['ma_bl'];
                     delete_binhluan($ma_bl);
                 }
-                    $list_binhluan = load_binhluan();
-                    include "./binh_luan/list.php";
+                    $list_bl = load_binhluan();
+                    include "../binh_luan/list.php";
                     break;
 
 
