@@ -268,9 +268,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
                     <div class="impl_search_overlay">
                         <div class="impl_search_area">
                             <div class="srch_inner">
-                                <form action="#">
-                                    <input type="kyw" placeholder="Search here... ">
-                                    <button type="submit" name="timkiem"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <form action="index.php?act=timkiem" method="POST">
+                                    <input type="text" placeholder="Search here... " name = "timkiem">
+                                    <button type="submit" name="submit">tim kiem</button>
                                 </form>
                                 <div class="srch_close_btn">
                                     <span class="srch_close_btn_icon"><i class="fa fa-times" aria-hidden="true"></i></span>

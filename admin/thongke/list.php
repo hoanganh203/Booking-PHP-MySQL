@@ -27,9 +27,6 @@
                     <td class="border border-green-600 px-3">' . $max_gia . '</td>
                     <td class="border border-green-600 px-3">' . $avg_gia . '</td>
                     <td>
-                    
-                    <a href="index.php?act=xoatk&id='.$id.'"><button class="normal update" >Delete</button></a>
-                </td>
                 </tr>
             ';
                 }

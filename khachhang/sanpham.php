@@ -1,5 +1,4 @@
 <div class="impl_featured_wrappar">
-<h5 style="text-align: center;">Sản phẩm của mục: <strong><?=$tendm?></strong></h5 style="text-align: center;">
         <?php
         $i = 0;
         foreach ($dssp as $sp) {

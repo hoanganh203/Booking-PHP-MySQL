@@ -39,7 +39,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             break;
 
         case 'dangky':
-
+            $sql = "SELECT * FROM taikhoan";
+            $s =0;
+            $listtaikhoan = pdo_query($sql);
             if (isset($_POST['dangky']) && ($_POST['dangky'])) {
                 $email = $_POST['email'];
                 $user = $_POST['user'];
@@ -50,7 +52,17 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $target_dir = "uploaduser/";
                 $target_file = $target_dir . basename($_FILES["img"]["name"]);
                 if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)); {
-                } if ($email == "") {
+                }
+                foreach ($listtaikhoan as $taikhoan) {
+                    if ($_POST['user'] === $taikhoan['user']) {
+                        $s++;
+                    }
+                    
+                }
+                if($s >=1){
+                    $err ="tài khoản đã tồn tại";
+                }
+                 else if  ($email == "") {
                     $err = 'Email không được để trống';
                 } else if ($user == "")   {
                     $err = 'Tên của bạn không trống';
@@ -88,8 +100,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     // $thongbao = "Đã đăng nhập thành công"; 
                     header('Location: index.php');
                 } else {
-                    $thongbao= "Thông tin tài khoản không chính xác";
-                    $thongbao = "tài khoản không tồn tại";
+                    $err= "tài khoản không tồn tại hoặc mật khẩu sai";
                 }
             }
         }
@@ -99,6 +110,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
 
         case 'edit_taikhoan':
+            $sql = "select * from taikhoan";
+            $s =0;
+            $listtaikhoan = pdo_query($sql);
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
@@ -106,7 +120,15 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $tel = $_POST['tel'];
                 $email = $_POST['email'];
                 $id_user = $_POST['id_user'];
-                if ($email == "") {
+                foreach ($listtaikhoan as $taikhoan) {
+                    if ($_POST['user'] === $taikhoan['user']) {
+                        $s++;
+                    }
+                }
+                if($s >=1){
+                    $err ="tài khoản đã tồn tại";
+                }
+                else if ($email == "") {
                     $err = 'Email không được để trống';
                 } else if ($user == "")   {
                     $err = 'Tên của bạn không trống';
@@ -156,7 +178,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $err = 'Tên của bạn không trống';
                 }else{
                 insert_booking($id_user,$id_xebook, $date_book,$time_nhan,$note);
-                include "khachhang/camon.php";
             }
         }
             include "khachhang/camon.php";
@@ -179,7 +200,14 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "khachhang/lichsubook.php";
             break;
 
-
+        case 'timkiem':
+           if (isset($_POST['submit'])) {
+              $timkiem = $_POST['timkiem'];
+              $sql = "SELECT * FROM sanpham where id_xebook LIKE '%$timkiem%' or `name` LIKE '%$timkiem%'";
+              $dssp  =pdo_query($sql);
+           }
+        include "khachhang/sanpham.php";
+        break;
 
         case 'thoat':
             session_unset();

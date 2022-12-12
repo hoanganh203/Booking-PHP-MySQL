@@ -5,13 +5,13 @@
 <form action="index.php?act=dangnhap" method="POST">
 <p class="err" style='color: red;' ><?php if(!empty($err)) echo $err?></p>
 <div class="input--item1">
-    <input type="text" name="user" class="form-input" placeholder=" " >
+    <input type="text" name="user" class="form-input" placeholder=" " value="<?php if(!empty($_POST['user'])) echo $_POST['user'] ?>">
     <label for="name" class="form-label">
         Tên đăng nhập
     </label>
 </div>
 <div class="input--item1">
-    <input type="password" name="pass" class="form-input" placeholder=" " >
+    <input type="password" name="pass" class="form-input" placeholder=" " value="<?php if(!empty($_POST['pass'])) echo $_POST['pass'] ?>">
     <label for="name" class="form-label">
         Password
     </label>
@@ -34,9 +34,9 @@
 </div>
 <?php
 
-if (isset($thongbao) && ($thongbao != "")) {
-  echo $thongbao;
-}
+// if (isset($thongbao) && ($thongbao != "")) {
+//   echo $thongbao;
+// }
 ?>
 </form>
 </div>
