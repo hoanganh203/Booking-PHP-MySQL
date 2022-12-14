@@ -51,7 +51,7 @@
                         <td>'.$id_xebook.'</td>
                         <td>'.$name.'</td>
                         <td>'.number_format($price).' Vnđ</td>
-                        <td>'.$mota.' $</td>
+                        <td>'.$mota.'</td>
                         <td>'.$hinh.'</td>
                         <td>'.$hinhphu.'</td>
                         <td>'.$luotxem.'</td>

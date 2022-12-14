@@ -104,7 +104,7 @@
     <div class="input--item1">
     <h3> Hình ảnh</h3>
    
-    <input type="file" name="img" required>
+    <input type="file" name="img" >
     </div>
     <input type="hidden" name="id_user" value="<?= $id_user ?>">
 

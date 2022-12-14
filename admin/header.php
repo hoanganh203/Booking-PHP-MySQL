@@ -15,7 +15,7 @@
                 <li><a href="index.php?act=home">Trang chủ</a>
             </li>
                 <li><a class="active"  href="index.php?act=listdm">Danh mục xe</a></li>
-                <li><a  href="index.php?act=addsp">Sản Phẩm</a></li>
+                <li><a  href="index.php?act=listsp">Sản Phẩm</a></li>
                 <li><a  href="index.php?act=taikhoan">QL_tàikhoan</a></li>
                 <li><a  href="index.php?act=booking">QL_Booking</a></li>
                 <li><a   href="index.php?act=list_binhluan">Bình luận</a></li>

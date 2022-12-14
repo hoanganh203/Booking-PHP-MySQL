@@ -48,7 +48,10 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $pass = $_POST['pass'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
+                $kttel='/^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/';
                 $img = $_FILES['img']['name'];
+                $file = $_FILES['img'];
+                $img = $file['name'];
                 $target_dir = "uploaduser/";
                 $target_file = $target_dir . basename($_FILES["img"]["name"]);
                 if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)); {
@@ -74,11 +77,28 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $err ='Địa chỉ của bạn không được để trống';
                 }else if ($tel== "") {
                     $err ='SDT của bạn không được để trống';
-                } else {
-                insert_taikhoan($email,$user,$pass,$address,$tel,$img);
-                include "khachhang/taikhoan/dangnhap.php";
-                break;
-            }
+                }else if  (!preg_match('/^[0-9]+$/', $tel)){
+                    $err = 'SDT phải là những con số';
+                }
+                
+                else if  (!preg_match($kttel, $tel )) {
+                    $err = 'SDT không đúng định dạng ';
+                }elseif ($img == "") {
+                    $err = 'Ảnh không được để trống';
+                }
+                else if ($file['size'] >0) {
+                    //Lấy phần mở rộng của file
+                    $ext = pathinfo($img, PATHINFO_EXTENSION );
+                    if ($ext != 'jpg' && $ext != 'png') {
+                        $err = "Bạn cần nhập hình ảnh là jpg hoặc png";
+                    } elseif ($file['size'] > 1024 * 1024 * 2) {
+                        $err = "Hình ảnh của bạn không được quá 2MB";
+                    }else{
+                        insert_taikhoan($email,$user,$pass,$address,$tel,$img);
+                        $err= 'đăng kí thành công';
+
+                    }
+                }
         }
         
             include "khachhang/taikhoan/dangky.php";
@@ -114,12 +134,15 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             $s =0;
             $listtaikhoan = pdo_query($sql);
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $kttel='/^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/';
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
                 $email = $_POST['email'];
                 $id_user = $_POST['id_user'];
+                $file = $_FILES['img'];
+                $img = $file['name'];
                 foreach ($listtaikhoan as $taikhoan) {
                     if ($_POST['user'] === $taikhoan['user']) {
                         $s++;
@@ -140,12 +163,27 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $err ='Địa chỉ của bạn không được để trống';
                 }else if ($tel== "") {
                     $err ='SDT của bạn không được để trống';
-                }else{
+                }else if  (!preg_match('/^[0-9]+$/', $tel)){
+                    $err = 'SDT phải là những con số';
+                }else if  (!preg_match($kttel, $tel )) {
+                    $err = 'SDT không đúng định dạng ';
+                } 
+                elseif ($img == "") {
+                    $err = 'Ảnh không được để trống';
+                }
+                else if ($file['size'] >0) {
+                    //Lấy phần mở rộng của file
+                    $ext = pathinfo($img, PATHINFO_EXTENSION );
+                    if ($ext != 'jpg' && $ext != 'png') {
+                        $err = "Bạn cần nhập hình ảnh là jpg hoặc png";
+                    } elseif ($file['size'] > 1024 * 1024 * 2) {
+                        $err = "Hình ảnh của bạn không được quá 2MB";
+                    }else{
+                        update_taikhoan($id_user, $user, $pass, $email, $address, $tel);
+                        $_SESSION['user'] = checkuser($user, $pass);
+                        header('Location: index.php?edit_taikhoan');
 
-                
-                update_taikhoan($id_user, $user, $pass, $email, $address, $tel);
-                $_SESSION['user'] = checkuser($user, $pass);
-                header('Location: index.php?edit_taikhoan');
+                    }
             }
         }
             include "khachhang/taikhoan/edit_taikhoan.php";

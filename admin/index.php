@@ -28,12 +28,15 @@ if(isset($_GET['act'])){
             case 'adddm':
                 if(isset($_POST['them'])){
                     $tenloai=$_POST['tenloai'];
+                    if ($tenloai == "") {
+                        $err = "không để trống tên danh mục";
+                    }else {
                     insert_danhmuc($tenloai);
                     $thongbao="them thành công";
                     $listdanhmuc = loadall_danhmuc();
                     include "danhmuc/list.php";
                     break;
-        
+                    }
                 }
                 include "danhmuc/add.php";
                 break;
@@ -72,26 +75,68 @@ if(isset($_GET['act'])){
 
     
             case 'addsp':
-                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                if (isset($_POST['themmoi'])) {
                     $iddm = $_POST['iddm'];
                     $tensp = $_POST['tensp'];
                     $giasp = $_POST['giasp'];
                     $mota = $_POST['mota'];
                     $hinhsp = $_FILES['hinhsp']['name'];
                     $hinhphu = $_FILES['hinhphu']['name'];
+                    $file = $_FILES['hinhsp'];
+                    $hinhsp = $file['name'];
 
                     $target_dir = "../images/";
                     $target_file = $target_dir . basename($_FILES["hinhsp"]["name"]);
-                    if (move_uploaded_file($_FILES["hinhsp"]["tmp_name"], $target_file)); {
-                    }
+                    move_uploaded_file($_FILES["hinhsp"]["tmp_name"], $target_file);
+                    $file = $_FILES['hinhphu'];
+                    $hinhphu = $file['name'];
                     $hinhphu = $_FILES['hinhphu']['name'];
-
                     $target_dir = "../img/";
                     $target_file = $target_dir . basename($_FILES["hinhphu"]["name"]);
-                    if (move_uploaded_file($_FILES["hinhphu"]["tmp_name"], $target_file)); {
+                    move_uploaded_file($_FILES["hinhphu"]["tmp_name"], $target_file);
+                    if ($iddm == "") {
+                        $err = "không để trống danh mục";
+                    }else if ($tensp== "") {
+                        $err = "không để trống tên sản phẩm";
+                    }else if ($giasp== "") {
+                        $err = "không để trống giá sản phẩm";
+                    }else if  (!preg_match('/^[0-9]+$/', $giasp)){
+                        $err = 'Giá sản phẩm phải là số';
+                    }else if  ($mota == ""){
+                        $err = 'mô tả không được để trống';
+                    } else if($hinhsp == ""){
+                        $err = 'Ảnh 1 không được để trống';
+                    }else if($hinhphu == ""){
+                        $err = 'Ảnh 2 không được để trống';
                     }
-                    insert_sanpham($tensp, $giasp, $hinhsp,$hinhphu, $mota, $iddm);
-                    $thongbao = "Thêm thành công";
+                    else if ($file['size'] >0) {
+                        //Lấy phần mở rộng của file
+                        $ext = pathinfo($hinhsp,PATHINFO_EXTENSION );
+                        if ($ext != 'jpg' && $ext != 'png') {
+                            $err = "Bạn cần nhập hình ảnh là jpg hoặc png";
+                        } else if ($file['size'] > 1024 * 1024 * 2) {
+                            $err = "Hình ảnh của bạn không được quá 2MB";
+                        }else{
+                            if ($file['size'] >0) {
+                                $ext = pathinfo($hinhphu, PATHINFO_EXTENSION );
+                                if ($ext != 'jpg' && $ext != 'png') {
+                                    $err = "Bạn cần nhập hình ảnh 2 là jpg hoặc png";
+                                } elseif ($file['size'] > 1024 * 1024 * 2) {
+                                    $err = "Hình ảnh của bạn không được quá 2MB";
+                                }else {
+                                    insert_sanpham($tensp, $giasp, $hinhsp,$hinhphu, $mota, $iddm);
+                                    // $thongbao = "Thêm thành công";
+                                        $listsanpham = loadall_sanpham($iddm); 
+                                        include "sanpham/list.php";
+                                        break;
+                                }
+    
+                        }    
+                    
+                    } 
+                        
+                    }
+                    
                 }
                 $listdanhmuc = loadall_danhmuc();
                 include "sanpham/add.php";
@@ -117,7 +162,7 @@ if(isset($_GET['act'])){
                 break;
 
                 case 'suasp':
-                    if (isset($_GET['id_xebook']) && ($_GET['id_xebook'] > 0)) {
+                    if (isset($_GET['id_xebook']) ) {
                         $sp = loadone_sanpham($_GET['id_xebook']);
                     }
                     $listdanhmuc = loadall_danhmuc();
@@ -125,7 +170,7 @@ if(isset($_GET['act'])){
                     break;
 
                 case "updatesp":
-                    if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    if (isset($_POST['capnhat'])) {
                         $id_xebook = $_POST['id_xebook'];
                         $tensp = $_POST['tensp'];
                         $giasp = $_POST['giasp'];

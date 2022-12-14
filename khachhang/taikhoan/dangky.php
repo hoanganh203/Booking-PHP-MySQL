@@ -98,7 +98,7 @@
     <div class="input--item2">
 
       <h3>Hình ảnh <br></h3>
-      <input type="file" name="img" required> <br>
+      <input type="file" name="img" value="<?php if(!empty($_POST['img'])) echo $_POST['img'] ?>"> <br>
       <input type="hidden" name="id" value="<? $id ?>" >
     </div>
     <div class="input--item3">
