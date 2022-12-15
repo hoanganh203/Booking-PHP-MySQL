@@ -194,55 +194,72 @@ if(isset($_GET['act'])){
     // booking
 
     
-            case 'booking':
-                if (isset($_POST['loc']) && ($_POST['loc'])) {
-                    $trangthai = $_POST['trangthai'];
+    case 'booking':
+        if (isset($_POST['loc']) && ($_POST['loc'])) {
+            $trangthai = $_POST['trangthai'];
 
-                } else {
-                    $trangthai = 0;
-                }
-                $listbooking =loadall_booking($trangthai);
-                include "quanlibooking/list.php";
-                break;
+        } else {
+            $trangthai = 0;
+        }
+        $listbooking1=loadall_booking1();
+        $listbooking =loadall_booking($trangthai);
+        include "quanlibooking/list.php";
+        break;
 
-                case 'suabook':
-                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                        $book= loadone_booking($_GET['id']);
-                    }
-                    include "quanlibooking/updatebook.php";
-                    break;
+        case 'suabook':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $book= loadone_booking($_GET['id']);
+            }
+            include "quanlibooking/updatebook.php";
+            break;
 
-             
-            case "updatebook":
-                if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
-                    $id = $_POST['id'];
-                    $trangthai = $_POST['trangthai'];
-                    update_booking($id,$trangthai);
-                    $thongbao="them thành công";
-                }
-                $listbooking =loadall_booking(0);
-                include "quanlibooking/list.php";
-                break;
+     
+    case "updatebook":
+        if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+            $id = $_POST['id'];
+            $trangthai = $_POST['trangthai'];
+            update_booking($id,$trangthai);
+            $thongbao="them thành công";
+        }
+        if (isset($_POST['loc']) && ($_POST['loc'])) {
+            $trangthai = $_POST['trangthai'];
 
-                case 'xoabook':
-                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                        delete_booking($_GET['id']);
-                    }
-                    $listbooking =loadall_booking(0);
-                    include "quanlibooking/list.php";
-                    break;
+        } else {
+            $trangthai = 0;
+        }
+        $listbooking1=loadall_booking1();
+        $listbooking =loadall_booking(0);
+        include "quanlibooking/list.php";
+        break;
+
+        case 'xoabook':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_booking($_GET['id']);
+            }
+            if (isset($_POST['loc']) && ($_POST['loc'])) {
+                $trangthai = $_POST['trangthai'];
+
+            } else {
+                $trangthai = 0;
+            }
+            $listbooking1=loadall_booking1();
+            $listbooking =loadall_booking(0);
+            include "quanlibooking/list.php";
+            break;
+
 
                             
 
             case 'suatk':
+                
                 if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
                     $address = $_POST['address'];
                     $tel = $_POST['tel'];
                     $email = $_POST['email'];
-                    $id = $_POST['id'];
-                    update_taikhoan($id, $user, $pass, $email, $address, $tel);
+                    $id_user = $_POST['id_user'];
+                    update_taikhoan($id_user, $user, $pass, $email, $address, $tel);
                     $_SESSION['user'] = checkuser($user,$pass);
                     header('Location: index.php?edit_taikhoan');
                 }
@@ -250,8 +267,8 @@ if(isset($_GET['act'])){
                 break;
             
         case 'xoatk':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                delete_taikhoan($_GET['id']);
+            if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
+                delete_taikhoan($_GET['id_user']);
             }
             $listtaikhoan = loadall_taikhoan();
             include "taikhoan/list.php";

@@ -5,10 +5,11 @@
         <div class="Danhmuc__content-tl  mb  input--item">
 
             <select name="trangthai">
-                <option value="0" style="background-color: red;">Chưa duyệt</option>
-                <option value="1" style="background-color: green;">Từ chối</option>
-                <option value="2" style="background-color: blue;">Đã duyệt</option>
-                <option value="3" style="background-color: blue;">Đã xem xe</option>
+                <option value="0" selected>Tất cả</option>
+                <option value="1" style="background-color: #F7A4A4;">Chưa duyệt</option>
+                <option value="2" style="background-color: #B73E3E;">Từ chối</option>
+                <option value="3" style="background-color:  #B6E2A1;">Đã duyệt</option>
+                <option value="4" style="background-color:#749F82 ;">Đã xem xe</option>
             </select>
         </div>
         <div class="Danhmuc__content1">
@@ -16,7 +17,7 @@
             <input type="submit" value="tìm kiếm" name="loc">
 
         </div>
-       
+
 </form>
 
 
@@ -35,35 +36,34 @@
     </tr>
 
     <?php
-    
-    foreach ($listbooking as $danhmucbooking) {
-        extract($danhmucbooking);
-        $suabook = "index.php?act=suabook&id=" . $id;
-        $xoabook = "index.php?act=xoabook&id=" . $id;
-        $chitietdon = "index.php?act=chitietdon&id=" . $id;
-        $sendmailhoadon = "index.php?act=sendmailhoadon&id=" . $id;
-        $sendmailbook = "index.php?act=sendmailbook&id=" . $id;
-        $sendmailhuy = "index.php?act=sendmailhuy&id=" . $id;
-        $hoadon = "index.php?act=hoadon&id=" . $id;
+    if (isset($trangthai) && $trangthai == 0) {
+        foreach ($listbooking1 as $danhmucbooking1) {
+            extract($danhmucbooking1);
+            $suabook = "index.php?act=suabook&id=" . $id;
+            $xoabook = "index.php?act=xoabook&id=" . $id;
+            $chitietdon = "index.php?act=chitietdon&id=" . $id;
+            $sendmailhoadon = "index.php?act=sendmailhoadon&id=" . $id;
+            $sendmailbook = "index.php?act=sendmailbook&id=" . $id;
+            $sendmailhuy = "index.php?act=sendmailhuy&id=" . $id;
+            $hoadon = "index.php?act=hoadon&id=" . $id;
 
+
+            if (isset($trangthai) && $trangthai == 1) {
     ?>
-
-        <?php if (isset($trangthai) && $trangthai == 0) {
-        ?>
-            <tr class="test3">
-                <td><?php echo '' . $id . ''; ?></td>
-                <td><?php echo '' . $id_user . ''; ?></td>
-                <td><?php echo '' . $user . ''; ?></td>
-                <td><?php echo '' . $name . ''; ?></td>
-                <td><?php echo '' . $date_book . ''; ?></td>
-                <td><?php echo '' . $time_nhan . ''; ?></td>
-                <td><?php echo '' . $note . ''; ?></td>
-                <td><?php if (isset($trangthai) && $trangthai == 0) {
-                        echo "Chưa duyệt";
-                    }
-                    ?>
-                </td>
-                <td> <button>
+                <tr class="test3">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td><?php if (isset($trangthai) && $trangthai == 1) {
+                            echo "Chưa duyệt";
+                        }
+                        ?>
+                    </td>
+                    <td> <button>
                             <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
                         </button>
                         <button>
@@ -74,36 +74,36 @@
                         </button>
 
 
-                </td>
+                    </td>
 
 
-            </tr>
+                </tr>
 
-            <style>
-                .test3 {
-                    background-color: #F7A4A4;
-                }
-            </style>
-
-        <?php   }
-        ?>
-
-        <?php if (isset($trangthai) && $trangthai == 1) {
-        ?>
-            <tr class="test4">
-                <td><?php echo '' . $id . ''; ?></td>
-                <td><?php echo '' . $id_user . ''; ?></td>
-                <td><?php echo '' . $user . ''; ?></td>
-                <td><?php echo '' . $name . ''; ?></td>
-                <td><?php echo '' . $date_book . ''; ?></td>
-                <td><?php echo '' . $time_nhan . ''; ?></td>
-                <td><?php echo '' . $note . ''; ?></td>
-                <td><?php if (isset($trangthai) && $trangthai == 1) {
-                        echo "Từ chối";
+                <style>
+                    .test3 {
+                        background-color: #F7A4A4;
                     }
-                    ?>
-                </td>
-                <td><button>
+                </style>
+
+            <?php   }
+            ?>
+
+            <?php if (isset($trangthai) && $trangthai == 2) {
+            ?>
+                <tr class="test4">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td><?php if (isset($trangthai) && $trangthai == 2) {
+                            echo "Từ chối";
+                        }
+                        ?>
+                    </td>
+                    <td><button>
                             <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
                         </button>
                         <button>
@@ -112,45 +112,45 @@
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
                         </button>
-                 
+
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $sendmailhuy . ''; ?>">MailHủy</a></span>
                         </button>
 
-                </td>
+                    </td>
 
 
-            </tr>
+                </tr>
 
-            <style>
-                .test4 {
-                    background-color: #B73E3E;
-                }
-            </style>
-
-        <?php   }
-        ?>
-
-        <?php if (isset($trangthai) && $trangthai == 2) {
-        ?>
-            <tr class="test1">
-                <td><?php echo '' . $id . ''; ?></td>
-                <td><?php echo '' . $id_user . ''; ?></td>
-                <td><?php echo '' . $user . ''; ?></td>
-                <td><?php echo '' . $name . ''; ?></td>
-                <td><?php echo '' . $date_book . ''; ?></td>
-                <td><?php echo '' . $time_nhan . ''; ?></td>
-                <td><?php echo '' . $note . ''; ?></td>
-                <td>
-                    <?php if (isset($trangthai) && $trangthai == 2) {
-                        echo "Đã duyệt";
+                <style>
+                    .test4 {
+                        background-color: #B73E3E;
                     }
-                    ?>
+                </style>
+
+            <?php   }
+            ?>
+
+            <?php if (isset($trangthai) && $trangthai == 3) {
+            ?>
+                <tr class="test1">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td>
+                        <?php if (isset($trangthai) && $trangthai == 3) {
+                            echo "Đã duyệt";
+                        }
+                        ?>
 
 
 
-                </td>
-                <td><button>
+                    </td>
+                    <td><button>
                             <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
                         </button>
                         <button>
@@ -159,42 +159,42 @@
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
                         </button>
-                 
+
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $sendmailbook . ''; ?>">Mail Book</a></span>
                         </button>
-                </td>
+                    </td>
 
 
 
 
-            </tr>
-            <style>
-                .test1 {
-                    background-color:  #B6E2A1;
-                }
-            </style>
-
-        <?php   }
-        ?>
-
-        <?php if (isset($trangthai) && $trangthai == 3) {
-        ?>
-            <tr class="test2">
-                <td><?php echo '' . $id . ''; ?></td>
-                <td><?php echo '' . $id_user . ''; ?></td>
-                <td><?php echo '' . $user . ''; ?></td>
-                <td><?php echo '' . $name . ''; ?></td>
-                <td><?php echo '' . $date_book . ''; ?></td>
-                <td><?php echo '' . $time_nhan . ''; ?></td>
-                <td><?php echo '' . $note . ''; ?></td>
-                <td>
-                    <?php if (isset($trangthai) && $trangthai == 3) {
-                        echo "Đã xem xe";
+                </tr>
+                <style>
+                    .test1 {
+                        background-color: #B6E2A1;
                     }
-                    ?>
-                </td>
-                <td><button>
+                </style>
+
+            <?php   }
+            ?>
+
+            <?php if (isset($trangthai) && $trangthai == 4) {
+            ?>
+                <tr class="test2">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td>
+                        <?php if (isset($trangthai) && $trangthai == 4) {
+                            echo "Đã xem xe";
+                        }
+                        ?>
+                    </td>
+                    <td><button>
                             <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
                         </button>
                         <button>
@@ -203,25 +203,219 @@
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
                         </button>
-                 
+
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $sendmailhoadon . ''; ?>">Mail HĐ</a></span>
                         </button>
                         <button class="chieudai">
                             <span><a href="<?php echo '' . $hoadon . ''; ?>">Hóa đơn</a></span>
                         </button>
-                </td>
-            </tr>
-            <style>
-                .test2 {
-                    background-color:#749F82 ;
-                }
-            </style>
+                    </td>
+                </tr>
+                <style>
+                    .test2 {
+                        background-color: #749F82;
+                    }
+                </style>
 
-        <?php   }
-        ?>
 
-    <?php } ?>
+            <?php  }
+        }
+    }
+
+
+    if (isset($trangthai) && $trangthai > 0) {
+
+
+        foreach ($listbooking as $danhmucbooking) {
+            extract($danhmucbooking);
+            $suabook = "index.php?act=suabook&id=" . $id;
+            $xoabook = "index.php?act=xoabook&id=" . $id;
+            $chitietdon = "index.php?act=chitietdon&id=" . $id;
+            $sendmailhoadon = "index.php?act=sendmailhoadon&id=" . $id;
+            $sendmailbook = "index.php?act=sendmailbook&id=" . $id;
+            $sendmailhuy = "index.php?act=sendmailhuy&id=" . $id;
+            $hoadon = "index.php?act=hoadon&id=" . $id;
+
+
+            ?>
+
+
+            <?php if (isset($trangthai) && $trangthai == 1) {
+            ?>
+                <tr class="test3">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td><?php if (isset($trangthai) && $trangthai == 1) {
+                            echo "Chưa duyệt";
+                        }
+                        ?>
+                    </td>
+                    <td> <button>
+                            <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
+                        </button>
+                        <button>
+                            <span><a href="<?php echo '' . $xoabook . ''; ?>">Xóa</a></span>
+                        </button>
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
+                        </button>
+
+
+                    </td>
+
+
+                </tr>
+
+                <style>
+                    .test3 {
+                        background-color: #F7A4A4;
+                    }
+                </style>
+
+            <?php   }
+            ?>
+
+            <?php if (isset($trangthai) && $trangthai == 2) {
+            ?>
+                <tr class="test4">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td><?php if (isset($trangthai) && $trangthai == 2) {
+                            echo "Từ chối";
+                        }
+                        ?>
+                    </td>
+                    <td><button>
+                            <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
+                        </button>
+                        <button>
+                            <span><a href="<?php echo '' . $xoabook . ''; ?>">Xóa</a></span>
+                        </button>
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
+                        </button>
+
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $sendmailhuy . ''; ?>">MailHủy</a></span>
+                        </button>
+
+                    </td>
+
+
+                </tr>
+
+                <style>
+                    .test4 {
+                        background-color: #B73E3E;
+                    }
+                </style>
+
+            <?php   }
+            ?>
+
+            <?php if (isset($trangthai) && $trangthai == 3) {
+            ?>
+                <tr class="test1">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td>
+                        <?php if (isset($trangthai) && $trangthai == 3) {
+                            echo "Đã duyệt";
+                        }
+                        ?>
+
+
+
+                    </td>
+                    <td><button>
+                            <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
+                        </button>
+                        <button>
+                            <span><a href="<?php echo '' . $xoabook . ''; ?>">Xóa</a></span>
+                        </button>
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
+                        </button>
+
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $sendmailbook . ''; ?>">Mail Book</a></span>
+                        </button>
+                    </td>
+
+
+
+
+                </tr>
+                <style>
+                    .test1 {
+                        background-color: #B6E2A1;
+                    }
+                </style>
+
+            <?php   }
+            ?>
+
+            <?php if (isset($trangthai) && $trangthai == 4) {
+            ?>
+                <tr class="test2">
+                    <td><?php echo '' . $id . ''; ?></td>
+                    <td><?php echo '' . $id_user . ''; ?></td>
+                    <td><?php echo '' . $user . ''; ?></td>
+                    <td><?php echo '' . $name . ''; ?></td>
+                    <td><?php echo '' . $date_book . ''; ?></td>
+                    <td><?php echo '' . $time_nhan . ''; ?></td>
+                    <td><?php echo '' . $note . ''; ?></td>
+                    <td>
+                        <?php if (isset($trangthai) && $trangthai == 4) {
+                            echo "Đã xem xe";
+                        }
+                        ?>
+                    </td>
+                    <td><button>
+                            <span><a href="<?php echo '' . $suabook . ''; ?>">Sửa</a></span>
+                        </button>
+                        <button>
+                            <span><a href="<?php echo '' . $xoabook . ''; ?>">Xóa</a></span>
+                        </button>
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $chitietdon . ''; ?>">Chi tiết</a></span>
+                        </button>
+
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $sendmailhoadon . ''; ?>">Mail HĐ</a></span>
+                        </button>
+                        <button class="chieudai">
+                            <span><a href="<?php echo '' . $hoadon . ''; ?>">Hóa đơn</a></span>
+                        </button>
+                    </td>
+                </tr>
+                <style>
+                    .test2 {
+                        background-color: #749F82;
+                    }
+                </style>
+
+            <?php   }
+            ?>
+
+    <?php }
+    } ?>
 
 </table>
 
@@ -299,12 +493,13 @@
         width: 15%;
         text-align: center;
         ;
-        
+
     }
+
     td:nth-child(8) {
         width: 5%;
         text-align: center;
         ;
-        
+
     }
 </style>

@@ -1,3 +1,11 @@
+
+
+
+<?php
+            $back = "index.php?act=booking";
+
+
+?>
 <div id="DivIdToPrint">    
         <table cellpadding="0" cellspacing="0">
         <table style="border:0;width:100%;">
@@ -33,6 +41,8 @@
         </table>
 
         <button style="margin: 10px 500px 0px 650px; cursor: pointer;">IN Hóa Đơn</button>
+        <a href="<?=$back?>"><button style="margin: 10px 500px 0px 650px; cursor: pointer;">Back</button></a>
+
 
 </div>
 

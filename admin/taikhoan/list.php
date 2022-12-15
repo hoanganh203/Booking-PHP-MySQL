@@ -12,15 +12,14 @@
                         <th>Email</th>
                         <th>Địa chỉ</th>
                         <th>Số điện</th>
-                        <th>Vai trò</th>
-                        <th></th>
+                        <th>Chức năng</th>
                     </tr>
 
                     <?php
                      foreach ($listtaikhoan as $taikhoan){
                         extract($taikhoan);
-                        $suatk="index.php?act=suatk&id=".$id_user;
-                        $xoatk="index.php?act=xoatk&id=".$id_user;
+                        $suatk="index.php?act=suatk&id_user=".$id_user;
+                        $xoatk="index.php?act=xoatk&id_user=".$id_user;
 
                         echo '<tr class="mr">
                         <td class="pd">'.$id_user.'</td>
@@ -29,7 +28,6 @@
                         <td class="pd">'.$email.'</td>
                         <td class="pd">'.$address.'</td>
                         <td class="pd">'.$tel.'</td>
-                        <td class="pd">'.$role.'</td>
                         <td><button>
                         <span><a href="' . $suatk . '; ?>">Sửa</a></span>
                     </button>

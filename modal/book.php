@@ -17,8 +17,8 @@ function loadall_booking($trangthai){
 function loadall_booking1(){
     $sql = "SELECT `booking`.`id` as `id`,`booking`.`id_user` as `id_user`,`taikhoan`.`user` as `user`,`sanpham`.`name` as `name`,`booking`.`date_book` as `date_book`,`booking`.`time_nhan` as `time_nhan`,`booking`.`note` as `note`,`booking`.`trangthai` as `trangthai` from `booking` , `taikhoan` , `sanpham` where `booking`.`id_user` = `taikhoan`.`id_user` and `booking`.`id_xebook` = `sanpham`.`id_xebook`";
     $sql.=" order by id desc";
-    $listbooking=pdo_query($sql);
-    return $listbooking;
+    $listbooking1=pdo_query($sql);
+    return $listbooking1;
 }
 
 function delete_booking($id){
